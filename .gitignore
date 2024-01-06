@@ -1,0 +1,12 @@
+/libs/
+/logs/
+
+/supplemental/Packs/*
+/supplemental/pz-zdoc-3.1.0
+/supplemental/TileZed
+/supplemental/WorldEd
+/supplemental/Tiles/2x
+/supplemental/Tiles/*
+
+!/supplemental/Packs/vn_garage.pack
+!/supplemental/Tiles/vn_garage.tiles

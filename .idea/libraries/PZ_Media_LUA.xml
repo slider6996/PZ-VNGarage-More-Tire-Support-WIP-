@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="PZ-Media-LUA" type="Lua">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/PZ-Media-LUA.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,20 @@
+module VNTireRack {
+	imports {
+		Base
+	}
+
+	recipe Tire Rack {
+		MetalPipe=10,
+		keep WeldingMask,
+		BlowTorch=5,
+		Result             : Moveables.vn_tire_rack_unpainted_0,
+		Time               : 500,
+		Category           : Welding,
+		OnGiveXP           : Give10MWXP,
+		SkillRequired      : MetalWelding=2,
+		AnimNode           : Disassemble,
+		Prop1              : Screwdriver,
+		NeedToBeLearn      : false,
+		CanBeDoneFromFloor :true,
+	}
+}
