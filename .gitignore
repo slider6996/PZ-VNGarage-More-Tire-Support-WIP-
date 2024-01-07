@@ -1,5 +1,7 @@
 /libs/
 /logs/
+/dist/
+.secret
 
 /supplemental/Packs/*
 /supplemental/pz-zdoc-3.1.0

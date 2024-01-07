@@ -1,7 +1,12 @@
 #!/bin/bash
 
-DEST="$HOME/Zomboid/mods/VNGarage"
-HERE="$(dirname "$0")"
+# Define "here" as the directory this script is in
+HERE="$(realpath "$(dirname "$0")")"
+# Load settings
+source "$HERE/settings.sh"
+
+# Set target directory for local testing
+DEST="$HOME/Zomboid/mods/$MOD_NAME"
 
 if [ ! -d "$HOME/Zomboid" ]; then
 	echo "ERROR: Zomboid directory not found at $HOME/Zomboid"
