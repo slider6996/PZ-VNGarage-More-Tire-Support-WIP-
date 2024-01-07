@@ -1,58 +1,35 @@
 # Veracious Network's Garage (Project Zomboid Mod)
 
-## Setting up Project
+![VN Garage Tire Rack](workshop/preview.png)
 
-### Configure settings
+Links
 
-Open `settings.sh` and edit to fit your needs.  Enter the mod name, title, description, etc.
+[![VN Garage on Steam Workshop](.github/btn-steam.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=3133520800)
+[![Veracious Network Discord](.github/btn-discord.png)](https://discord.gg/9CWsDncg7w)
+[![Veracious Network Web](.github/btn-vn.png)](https://www.veraciousnetwork.com)
 
-### Setup local environment
+---
 
-Running `setup.sh` will setup the local environment for development...
+Veracious Network's Garage is a mod for Project Zomboid that provides the following features:
 
-1. Downloads latest official tilesets and sprites
-2. Installs TileZed/WorldEd
-3. Installs and runs pz-zdoc to generate game documentation from your live game code
+* Tire rack
+* (more to come)
 
-This setup generally only needs to be run once.
+## Tire Rack
 
+![Tire Rack](src/poster.png)
 
-## Tiles and Spritemap
+The tire rack is a storage container that can hold up to 12 tires, (or more if you are organized).
+This is a 1x1 tile object that can be placed on the ground and accepts just tires.
 
-### Create new tileset
+A notable feature of this tire rack is that it displays the amount of tires stored.
+ie: if you store 5 tires, you will see 5 tires on the rack.
 
-This step is not required for this project as a tileset is already created, 
-but including instructions for future reference.
+## Installation
 
-1. Run TileZed.sh and click Tools -> Tilesets... to rebuild the local cache of tilesets
-2. (if this does not work, delete ~/.TileZed)
-3. Click Tools -> Tile Properties (.tiles)
-4. Create new tileset named something meaningful located within supplemental/Tiles
-5. Add necessary tilesets and save the tiles
+* Mod Name = VNGarage
+* ModID = 3133520800
 
-### Add or update tileset
+## Development
 
-For tilesets, save the full tileset as a .png within designs/tilesets (1024x2048 recommended).
-The image filename should match what you want the tileset to be named.
-
-1. Run `deploy_local.sh` to copy tileset into TileZed
-2. Run TileZed.sh and click Tools -> Tilesets... to rebuild the local cache of tilesets
-3. (if this does not work, delete ~/.TileZed)
-4. Click Tools -> Tile Properties (.tiles)
-5. Open mod tileset from supplemental/Tiles
-6. Add necessary tilesets and save the tiles
-
-### Update Pack
-
-1. Run TileZed.sh and click Tools -> Create .pack file
-2. Save .pack file in supplemental/Packs/ (overwriting existing file if necessary)
-3. Add designs/tilesets as input image directories
-4. Add mod-specific tiles file from supplemental/Tiles/ if necessary
-
-
-## Deploying Local Code
-
-Run `deploy_local.sh` to install the mod in your local game directory.
-This is useful for testing prior to deployment.
-
-Make sure you've already setup `settings.sh` prior to running this script.
+Check the [Development Guide](DEVELOPMENT.md) for information on working with this repository.
