@@ -82,3 +82,9 @@ steamcmd +login $SECRET +workshop_build_item "$DIST/metadata.vdf" +quit
 
 # Clear the CHANGELOG, (as this is now recorded in the distribution)
 echo "" > "$HERE/CHANGELOG"
+
+
+if [ "$WORKSHOP_ID" -eq 0 ]; then
+	# Extract the workshop ID from the output of steamcmd
+	echo "New mod uploaded to Steam workshop, please set the WORKSHOP_ID in settings.sh."
+fi
