@@ -30,9 +30,26 @@ export WORKSHOP_ID=3133520800
 # [url=link]text[/url]
 # [img]link[/img]
 #
-export MOD_DESCRIPTION="Veracious Network's Garage currently adds a tire rack as a storage container which displays how many tires are stored.
+export MOD_DESCRIPTION="Veracious Network's Garage adds a tire rack as a storage container which displays how many tires are stored.
 
-Expect more features to come."
+Expect more features and equipment to come!
+
+[hr]
+
+Source Code: [url]https://github.com/VeraciousNetwork/PZ-VNGarage[/url]
+
+Issue Tracker: [url]https://github.com/VeraciousNetwork/PZ-VNGarage/issues[/url]
+
+License: AGPLv3
+
+[hr]
+
+This mod is OPEN SOURCE, so redistribution and use is mod packs is ALLOWED.
+
+[hr]
+
+Mod Name: VNGarage
+Mod ID: 3133520800"
 
 ##
 # Newline-separated list of tiles to install

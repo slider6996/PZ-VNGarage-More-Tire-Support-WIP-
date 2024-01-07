@@ -13,7 +13,7 @@ module VNTireRack {
 		OnGiveXP           : Give10MWXP,
 		SkillRequired      : MetalWelding=2,
 		AnimNode           : Disassemble,
-		Prop1              : Screwdriver,
+		Prop1              : BlowTorch,
 		NeedToBeLearn      : false,
 		CanBeDoneFromFloor :true,
 	}
