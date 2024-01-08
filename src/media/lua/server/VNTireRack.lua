@@ -123,34 +123,49 @@ MapObjects.OnLoadWithSprite('vn_tire_rack_unpainted_3', VNTireRack.SetupPlacedTi
 
 
 --- Overwrite the TransferItem method to provide an artificial hook for updating the inventory.
-local oldTransferItem = ISInventoryTransferAction.transferItem --This is to make it possible to store it I think?
+--- This is not recommended as it checks on EVERY item transfer across EVERY container,
+--- but is necessary because there currently is not an event in place.
+local oldTransferItem = ISInventoryTransferAction.transferItem
 function ISInventoryTransferAction:transferItem(...)
 	-- Run the original method first; we have no need to modify that behaviour
 	local ret = {oldTransferItem(self, ...)}
 
-	if self.srcContainer and self.srcContainer:getParent() then
+	if self.srcContainer then
 		---@type IsoObject
 		local parent = self.srcContainer:getParent()
 
-		---@type IsoSprite
-		local sprite = parent:getSprite()
+		if parent then
+			---@type IsoSprite
+			local sprite = parent:getSprite()
 
-		if sprite and SpriteNameIsTireRack(sprite:getName()) then
-			-- Instruct the tire rack to update its sprite
-			VNTireRack.UpdateSprite(parent)
+			if sprite then
+				local spriteName = sprite:getName()
+
+				if spriteName and SpriteNameIsTireRack(spriteName) then
+					-- Instruct the tire rack to update its sprite
+					VNTireRack.UpdateSprite(parent)
+				end
+			end
 		end
 	end
 
-	if self.destContainer and self.destContainer:getParent() then
+	if self.destContainer then
+
 		---@type IsoObject
 		local parent = self.destContainer:getParent()
 
-		---@type IsoSprite
-		local sprite = parent:getSprite()
+		if parent then
+			---@type IsoSprite
+			local sprite = parent:getSprite()
 
-		if sprite and SpriteNameIsTireRack(sprite:getName()) then
-			-- Instruct the tire rack to update its sprite
-			VNTireRack.UpdateSprite(parent)
+			if sprite then
+				local spriteName = sprite:getName()
+
+				if spriteName and SpriteNameIsTireRack(spriteName) then
+					-- Instruct the tire rack to update its sprite
+					VNTireRack.UpdateSprite(parent)
+				end
+			end
 		end
 	end
 
