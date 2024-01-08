@@ -30,15 +30,41 @@ export WORKSHOP_ID=3133520800
 # [url=link]text[/url]
 # [img]link[/img]
 #
-export MOD_DESCRIPTION="Veracious Network's Garage adds a tire rack as a storage container which displays how many tires are stored.
+export MOD_DESCRIPTION="[h1]Veracious Network's Garage[/h1]
+
+Veracious Network's Garage adds a tire rack as a storage container which displays how many tires are stored.
 
 Expect more features and equipment to come!
+
+[h2]Features[/h2]
+
+[h3]Tire Rack[/h3]
+
+[img]https://raw.githubusercontent.com/VeraciousNetwork/PZ-VNGarage/master/docs/images/preview-tirerack.png[/img]
+
+Craftable tire rack that takes up a 1x1 square that can be placed in any N/E/S/W orientation.
+Each rack holds up to 12 tires (or more if you are organized).
+
+Recipe:
+
+[img]https://raw.githubusercontent.com/VeraciousNetwork/PZ-VNGarage/master/docs/images/recipe-tirerack.png[/img]
+
+
+[list]
+  [*] Level 2 metalworking
+  [*] 10x metal pipes
+  [*] Propane torch with 5 units of propane
+[/list]
+
+Item does not appear in the world and needs to be crafted.  No recipe book required and works with existing saves.
 
 [hr]
 
 Source Code: [url]https://github.com/VeraciousNetwork/PZ-VNGarage[/url]
 
 Issue Tracker: [url]https://github.com/VeraciousNetwork/PZ-VNGarage/issues[/url]
+
+Discord: [url]https://discord.gg/ymWb5tfN3P[/url]
 
 License: AGPLv3
 
