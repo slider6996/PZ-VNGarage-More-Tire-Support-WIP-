@@ -1,4 +1,8 @@
-Fix issue with transferring items in a vehicle.
-
-Since there is no event for monitoring item transfers to containers, an override to ISInventoryTransferAction.transferItem
-is required.  We just needed to implement an additional check if the source or destination container does not have a Sprite.
+[list]
+    [*] Cleanup source code A LOT
+    [*] Add documentation throughout
+    [*] Switch from ISInventoryTransferAction.transferItem to ItemPickerJava.updateOverlaySprite for better single player reliability
+    [*] Implement K15 vehicle tires (thanks NoFaceTV)
+    [*] Fix multiplayer support for sprites
+    [*] Fix animation (was using the incorrect one)
+[/list]

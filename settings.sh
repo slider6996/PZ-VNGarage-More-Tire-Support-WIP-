@@ -38,7 +38,7 @@ Expect more features and equipment to come!
 
 [h2]Features[/h2]
 
-[h3]Tire Rack[/h3]
+[h3]Unpainted Tire Rack[/h3]
 
 [img]https://raw.githubusercontent.com/VeraciousNetwork/PZ-VNGarage/master/docs/images/preview-tirerack.png[/img]
 
@@ -57,6 +57,8 @@ Recipe:
 [/list]
 
 Item does not appear in the world and needs to be crafted.  No recipe book required and works with existing saves.
+
+[b]MULTIPLAYER SERVERS SUPPORTED[/b] Note, at the moment the sprite will flash on adding or removing tires in multiplayer.
 
 [hr]
 

@@ -1,173 +1,41 @@
+---
+--- Server functions and utilities for Veracious Network's Garage
+---
+--- Copyright (C) 2024  Charlie Powell <cdp1337@veraciousnetwork.com>
+---
+--- This program is free software: you can redistribute it and/or modify
+--- it under the terms of the GNU Affero General Public License as
+--- published by the Free Software Foundation, either version 3 of the
+--- License, or (at your option) any later version.
+---
+--- This program is distributed in the hope that it will be useful,
+--- but WITHOUT ANY WARRANTY; without even the implied warranty of
+--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+--- GNU Affero General Public License for more details.
+---
+--- You should have received a copy of the GNU Affero General Public License
+--- along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-- Only run this code in SERVER mode
+if not isServer() then return end
+
 ---@global
 VNTireRack = {}
 
-
---- Check if a given Sprite name is a tire rack
----@param spriteName string The name of the sprite to check
-local SpriteNameIsTireRack = function(spriteName)
-	return string.find(spriteName, "vn_tire_rack_") ~= nil
-end
+-- Persistent storage of all tire racks in the game
+-- Used to walk through in the cron job.
+VNTireRack.Racks = {}
 
 
---- Check if a given Item is a tire
----@param itemName string The name of the item to check
-local ScriptItemIsTire = function(itemName)
-
-	-- Simple list of valid tire KeyNames within the game.
-	-- To expand support for mods, just add the modded tire names here.
-	local ValidTireNames = {
-		'ModernTire1',
-		'ModernTire2',
-		'ModernTire3',
-		'ModernTire8',
-		'NormalTire1',
-		'NormalTire2',
-		'NormalTire3',
-		'NormalTire8',
-		'OldTire1',
-		'OldTire2',
-		'OldTire3',
-		'OldTire8',
-	}
-
-	for index, value in ipairs(ValidTireNames) do
-		if value == itemName then
-			return true
-		end
-	end
-
-	return false
-
-end
-
-
---- Check to see if the placed item is a tire rack, (and attach the expected functionality if so)
----@param isoObject IsoThumpable
-VNTireRack.SetupPlacedTile = function(isoObject)
-	---@type IsoSprite
-	local sprite = isoObject:getSprite()
-	---@type ItemContainer
-	local container = isoObject:getContainer()
-
-	if not sprite then
-		-- Failsafe if the source item doesn't have a sprite
-		return
-	end
-
-	if not container then
-		-- Failsafe if the source item doesn't have a container
-		return
-	end
-
-	if SpriteNameIsTireRack(sprite:getName()) then
-		container:setAcceptItemFunction('VNTireRack.AcceptItemFunction')
-		container:setCapacity(180) -- 12 items of 15 weight tires
+--- Since the server handles updateSprites in Java and does not expose a mechanism for triggering this,
+--- manually watch the containers and check if they need to be refreshed every so often.
+function VNTireRack.ScheduledUpdateCheck()
+	for index, value in ipairs(VNTireRack.Racks) do
+		VNTireRackCommon.UpdateTireRackSprite(value)
 	end
 end
 
 
---- Handle accepting only tires on the tire rack
----@param isoObject IsoThumpable
-VNTireRack.AcceptItemFunction = function(container, item)
-	local sItem = item:getScriptItem()
-
-	if not sItem then
-		-- Failsafe if the source item doesn't have a script item
-		return false
-	end
-
-	return ScriptItemIsTire(sItem:getName())
-end
-
-
-VNTireRack.UpdateSprite = function(isoObject)
-	---@type ItemContainer
-	local container = isoObject:getContainer()
-	---@type IsoSprite
-	local sprite = isoObject:getSprite()
-
-	-- Retrieve the facing orientation of the default Sprite,
-	-- 0 = North, 1 = East, 2 = South, 3 = West
-	-- This is dependent on the spritemap, and is used to adjust the QTY offset to the correct orientation sprite.
-	local orientation = tonumber(string.sub(sprite:getName(), -1))
-
-	local base = string.match(sprite:getName(), '.*_')
-
-	-- Use the number of items currently in the inventory to adjust the sprite position.
-	-- Positions 0 - 3 are 0 qty,
-	-- Positions 4 - 7 are 1 qty,
-	-- etc.  (P + 4*len) will provide the accurate positional sprite.
-	local len = container:getItems():size()
-
-	if len > 12 then
-		-- Failsafe as there are only 12 sets of sprites in the spritemap (plus one overflow)
-		isoObject:setOverlaySprite(base .. tostring(orientation + (4 * 13)))
-	elseif len > 0 then
-		isoObject:setOverlaySprite(base .. tostring(orientation + (4 * len)))
-	else
-		isoObject:setOverlaySprite(nil)
-	end
-end
-
-
---- Check to see if any newly placed Tile is a tire rack and perform the adjustments if necessary.
---- This only applies to NEWLY placed tiles, not existing ones.
-Events.OnObjectAdded.Add(VNTireRack.SetupPlacedTile)
-
-
---- Handle EXISTING objects already on the map at the time of game load.
-MapObjects.OnLoadWithSprite('vn_tire_rack_unpainted_0', VNTireRack.SetupPlacedTile, 5)
-MapObjects.OnLoadWithSprite('vn_tire_rack_unpainted_1', VNTireRack.SetupPlacedTile, 5)
-MapObjects.OnLoadWithSprite('vn_tire_rack_unpainted_2', VNTireRack.SetupPlacedTile, 5)
-MapObjects.OnLoadWithSprite('vn_tire_rack_unpainted_3', VNTireRack.SetupPlacedTile, 5)
-
-
---- Overwrite the TransferItem method to provide an artificial hook for updating the inventory.
---- This is not recommended as it checks on EVERY item transfer across EVERY container,
---- but is necessary because there currently is not an event in place.
-local oldTransferItem = ISInventoryTransferAction.transferItem
-function ISInventoryTransferAction:transferItem(...)
-	-- Run the original method first; we have no need to modify that behaviour
-	local ret = {oldTransferItem(self, ...)}
-
-	if self.srcContainer then
-		---@type IsoObject
-		local parent = self.srcContainer:getParent()
-
-		if parent then
-			---@type IsoSprite
-			local sprite = parent:getSprite()
-
-			if sprite then
-				local spriteName = sprite:getName()
-
-				if spriteName and SpriteNameIsTireRack(spriteName) then
-					-- Instruct the tire rack to update its sprite
-					VNTireRack.UpdateSprite(parent)
-				end
-			end
-		end
-	end
-
-	if self.destContainer then
-
-		---@type IsoObject
-		local parent = self.destContainer:getParent()
-
-		if parent then
-			---@type IsoSprite
-			local sprite = parent:getSprite()
-
-			if sprite then
-				local spriteName = sprite:getName()
-
-				if spriteName and SpriteNameIsTireRack(spriteName) then
-					-- Instruct the tire rack to update its sprite
-					VNTireRack.UpdateSprite(parent)
-				end
-			end
-		end
-	end
-
-	return unpack(ret)
-end
+-- The server does not expose a mechanism for updating inventory (at least that I could find),
+-- so attach a call to run every "10 minutes" in game to refresh the sprites of all tire racks.
+Events.EveryTenMinutes.Add(VNTireRack.ScheduledUpdateCheck)
