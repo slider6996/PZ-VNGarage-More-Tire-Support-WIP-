@@ -9,7 +9,7 @@ module VNTireRack {
 		BlowTorch=5,
 		Result             : Moveables.vn_tire_rack_unpainted_0,
 		Time               : 500,
-		Category           : Metalworking,
+		Category           : Welding,
 		OnGiveXP           : Give10MWXP,
 		SkillRequired      : MetalWelding=2,
 		AnimNode           : BlowTorchMid,
