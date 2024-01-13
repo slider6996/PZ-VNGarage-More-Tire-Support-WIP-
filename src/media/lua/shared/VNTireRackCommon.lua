@@ -39,8 +39,8 @@ VNTireRackCommon.ValidTireNames = {
 	'NormalTire8',
 	'OldTire8',
 	-- K15 Vehicles (WHY SO MANY?!??!?)
-	'ECTO1tire1_item',
-	'ECTO1tire2_item',
+	'ECTO1tire1_Item',
+	'ECTO1tire2_Item',
 	'67gt500Tire3',
 	'67gt500Tire3',
 	'CamaroSStire3',
