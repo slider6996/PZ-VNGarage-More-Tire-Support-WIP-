@@ -18,6 +18,8 @@ export MOD_TITLE="Veracious Network's Garage"
 #
 export WORKSHOP_ID=3133520800
 
+export MOD_TAGS="Build 41, Building, Multiplayer, Realistic"
+
 ##
 # Description for Steam Workshop, supports BBCode
 # @see https://www.bbcode.org/how-to-use-bbcode-a-complete-guide.php
@@ -45,6 +47,13 @@ Expect more features and equipment to come!
 Craftable tire rack that takes up a 1x1 square that can be placed in any N/E/S/W orientation.
 Each rack holds up to 12 tires (or more if you are organized).
 
+[list]
+  [*] Has 180kg storage, but only holds tires
+  [*] Supports KI5 modded tires
+  [*] Full support for singleplayer and multiplayer
+  [*] Sprite displays number of tires stored, (up to 12)
+[/list]
+
 Recipe:
 
 [img]https://raw.githubusercontent.com/VeraciousNetwork/PZ-VNGarage/master/docs/images/recipe-tirerack.png[/img]
@@ -60,6 +69,16 @@ Item does not appear in the world and needs to be crafted.  No recipe book requi
 
 [b]MULTIPLAYER SERVERS SUPPORTED[/b] Note, at the moment the sprite will flash on adding or removing tires in multiplayer.
 
+[h2]Planned Features[/h2]
+
+[list]
+  [*] Better sprite quality
+  [*] More color options for tire rack (start collecting paint)
+  [*] Battery tender / storage shelf
+  [*] Muffler rack (wall mounted)
+  [*] More?  Feel free to make suggestions.
+[/list]
+
 [hr]
 
 Source Code: [url]https://github.com/VeraciousNetwork/PZ-VNGarage[/url]
@@ -69,6 +88,8 @@ Issue Tracker: [url]https://github.com/VeraciousNetwork/PZ-VNGarage/issues[/url]
 Discord: [url]https://discord.gg/ymWb5tfN3P[/url]
 
 License: AGPLv3
+
+Kudos to Poltergeist (https://github.com/Poltergeist-ix) for chatting and sharing some ideas.
 
 [hr]
 

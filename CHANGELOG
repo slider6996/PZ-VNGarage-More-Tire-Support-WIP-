@@ -1,8 +1,4 @@
 [list]
-    [*] Cleanup source code A LOT
-    [*] Add documentation throughout
-    [*] Switch from ISInventoryTransferAction.transferItem to ItemPickerJava.updateOverlaySprite for better single player reliability
-    [*] Implement K15 vehicle tires (thanks NoFaceTV)
-    [*] Fix multiplayer support for sprites
-    [*] Fix animation (was using the incorrect one)
+    [*] Fix spelling for 59 Meteor Tire items
+    [*] Set category to Welding
 [/list]

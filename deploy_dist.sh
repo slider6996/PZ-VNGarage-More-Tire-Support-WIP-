@@ -71,6 +71,7 @@ cat > "$DIST/metadata.vdf" << EOD
   "title" "$MOD_TITLE"
   "description" "$MOD_DESCRIPTION"
   "changenote" "$CHANGELOG"
+  "tags" "$MOD_TAGS"
 }
 EOD
 
@@ -81,7 +82,9 @@ echo "Uploading to Steam workshop...."
 steamcmd +login $SECRET +workshop_build_item "$DIST/metadata.vdf" +quit
 
 # Clear the CHANGELOG, (as this is now recorded in the distribution)
-echo "" > "$HERE/CHANGELOG"
+echo "[list]
+  [*]
+[/list]" > "$HERE/CHANGELOG"
 
 
 if [ "$WORKSHOP_ID" -eq 0 ]; then
