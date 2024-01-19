@@ -69,10 +69,13 @@ Item does not appear in the world and needs to be crafted.  No recipe book requi
 
 [b]MULTIPLAYER SERVERS SUPPORTED[/b] Note, at the moment the sprite will flash on adding or removing tires in multiplayer.
 
+[hr]
+
+
 [h2]Planned Features[/h2]
 
 [list]
-  [*] Better sprite quality
+  [*] Better sprite quality (IN PROGRESS)
   [*] More color options for tire rack (start collecting paint)
   [*] Battery tender / storage shelf
   [*] Muffler rack (wall mounted)
@@ -80,6 +83,16 @@ Item does not appear in the world and needs to be crafted.  No recipe book requi
 [/list]
 
 [hr]
+
+[h2]Related Works[/h2]
+
+[list]
+  [*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3141544193]Tire Racks in Mechanics & Garages by Champy[/url]
+[/list]
+
+[hr]
+
+[h2]More Info[/h2]
 
 Source Code: [url]https://github.com/VeraciousNetwork/PZ-VNGarage[/url]
 
@@ -97,8 +110,10 @@ This mod is OPEN SOURCE, so redistribution and use is mod packs is ALLOWED.
 
 [hr]
 
-Mod Name: VNGarage
-Mod ID: 3133520800"
+[h2]Install Info[/h2]
+
+Mod Name (Mods=...):        VNGarage
+Mod ID (WorkshopItems=...): 3133520800"
 
 ##
 # Newline-separated list of tiles to install
