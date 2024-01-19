@@ -18,6 +18,18 @@ if [ -z "$CHANGELOG" ]; then
 	exit 1
 fi
 
+if [ "$CHANGELOG" == "[list]
+  [*]
+[/list]" ]; then
+	echo "ERROR: Please enter a note of changes in $HERE/CHANGELOG"
+	exit 1
+fi
+
+if [ ! -e "$HERE/DESCRIPTION.bbcode" ]; then
+	echo "ERROR: Please create a DESCRIPTION.bbcode with the contents of the mod description"
+	exit 1
+fi
+
 if [ ! -e "$HERE/.secret" ]; then
 	echo "ERROR: Please create a file at $HERE/.secret containing your Steam Workshop login (and optionally Steam password)"
 	exit 1
@@ -36,6 +48,12 @@ fi
 # Set target directory for local testing
 DIST="$HERE/dist/$(date +%Y%m%d.%H%M)"
 DEST="$DIST/content/mods/$MOD_NAME"
+
+# The mod contents is now contained inside DESCRIPTION
+# it was getting too unwieldy to be in a simple variable.
+# Run through sed to replace quotes with HTML quote characters, (since it is passed to a simple VDF file)
+MOD_DESCRIPTION="$(cat "$HERE/DESCRIPTION.bbcode" | sed 's:":\&quot;:g')"
+
 
 if [ ! -d "$DEST" ]; then
 	mkdir -p "$DEST"
@@ -61,6 +79,7 @@ fi
 # Deploy Steam-specific content
 cp "$HERE/workshop/preview.png" "$DIST/preview.png"
 
+# Build the metadata VDF file, this is what steamcmd uses to know where everything is located
 cat > "$DIST/metadata.vdf" << EOD
 "workshopitem" {
   "appid" "108600"
@@ -71,9 +90,18 @@ cat > "$DIST/metadata.vdf" << EOD
   "title" "$MOD_TITLE"
   "description" "$MOD_DESCRIPTION"
   "changenote" "$CHANGELOG"
-  "tags" "$MOD_TAGS"
 }
 EOD
+
+# Build a workshop.txt file for publishing mod tags
+cat > "$DIST/content/workshop.txt" << EOD
+version=1
+title=$MOD_TITLE
+tags=$MOD_TAGS
+visibility=public
+EOD
+
+cat DESCRIPTION.bbcode | sed 's:^:description=:g' >> "$DIST/content/workshop.txt"
 
 
 echo "Bundled mod in $DIST"
