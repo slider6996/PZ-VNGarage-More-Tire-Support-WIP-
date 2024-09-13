@@ -90,6 +90,21 @@ VNTireRackCommon.ValidTireNames = {
 	'W460ModernTire2',
 	'W460NormalTire2',
 	'W460WideTire2',
+	'DodgeRTtire',
+	'CUDAtire',
+	'CamaroSStire',
+	'DodgeRTtire3',
+	'93chevySuburbanTire1',
+	'93chevySuburbanTire2',
+	'93fordCF8000DoubleTires2',
+	'93fordCF8000TIre2',
+	'93fordF350Tire',
+	'93fordF350Tire2',
+	'93fordF350DoubleTires',
+	'93fordF350DoubleTires2',
+	'82firebirdTire3',
+	'98stageaTire3',
+	'81deloreanDMC12Tire3',
 }
 
 
