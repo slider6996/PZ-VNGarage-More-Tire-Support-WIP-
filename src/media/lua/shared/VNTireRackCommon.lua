@@ -105,6 +105,11 @@ VNTireRackCommon.ValidTireNames = {
 	'82firebirdTire3',
 	'98stageaTire3',
 	'81deloreanDMC12Tire3',
+	'SmallTire1',
+        'SmallTire2',
+        '89volvo200Tire0',
+        '89volvo200Tire1',
+        '89volvo200Tire2',
 }
 
 
