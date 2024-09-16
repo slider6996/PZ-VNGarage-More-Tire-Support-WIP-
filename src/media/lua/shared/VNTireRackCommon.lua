@@ -110,6 +110,18 @@ VNTireRackCommon.ValidTireNames = {
         '89volvo200Tire0',
         '89volvo200Tire1',
         '89volvo200Tire2',
+	'85clubManTire1',
+	'LargeTire',
+	'Large2TireAxle',
+	'Large4TireAxle',
+	'LargeDoubleTires',
+	'49ford8NFrontTire2',
+	'49ford8NRearTire2',
+	'76chevyKseriesTire2',
+	'80chevyCKseriesTire1',
+	'80chevyCKseriesTire2',
+	'90chevyCKseriesTire1',
+	'90chevyCKseriesTire2',
 }
 
 
