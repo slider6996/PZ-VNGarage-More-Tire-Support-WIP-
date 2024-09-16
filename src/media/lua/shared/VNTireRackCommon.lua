@@ -122,6 +122,16 @@ VNTireRackCommon.ValidTireNames = {
 	'80chevyCKseriesTire2',
 	'90chevyCKseriesTire1',
 	'90chevyCKseriesTire2',
+	'ZNL50oldTire',
+	'ZNL50normalTire',
+	'ZNL50modernTire',
+	'SS100oldTire',
+	'SS100normalTire',
+	'SS100modernTire',
+	'ModernTire',
+	'Medium4TireAxle',
+	'MediumTire,'
+	'SmallTire',
 }
 
 
