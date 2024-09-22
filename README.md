@@ -13,7 +13,9 @@ Links
 Veracious Network's Garage is a mod for Project Zomboid that provides the following features:
 
 * Tire rack
-* (more to come)
+* (more to come)  Currently adding all of KI5 Vehicle and will add more from other Authors as well.
+
+* KI5 Vehicles DONE 100% ****
 
 ## Tire Rack
 
