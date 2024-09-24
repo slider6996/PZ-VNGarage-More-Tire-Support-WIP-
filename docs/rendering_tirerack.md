@@ -25,13 +25,11 @@ Select which tires and assets to include in the export. This is done simply by c
 
 ## Rendering
 
-When the containers and camera are set as necessary, generate the pixel art with Output -> Render Pixelart.
+When the containers and camera are set as necessary, generate the pixel art CTRL+F12.
 
-![screenshot_2024-01-18_23-24-01.png](images/screenshot_2024-01-18_23-24-01.png)
+For convenience, an animation profile is set to render each orientation in a different frame.
 
-Lastly export the pixelart from the Image -> Save As option.
-
-![screenshot_2024-01-18_23-24-20.png](images/screenshot_2024-01-18_23-24-20.png)
+![Animation Overview](images/screenshot_2024-09-23_23-47-10.png)
 
 For naming conventions,
 
@@ -51,19 +49,13 @@ For naming conventions,
                 \  /
 ```
 
-Individual tiles should be exported to `designs/tiles/` in a folder specific to that resource.
+Individual tile snapshots should be exported to `designs/render/`.
 
-## Merging
+To assist with naming conventions, the `sort_render.sh` script can be used.
 
-Once all 52 tiles are exported, merge them together in a single spritesheet in `designs/tilemaps/`.
-This can be done manually with gimp just by dragging the files into a single file and positioning them.
-
-To make this process easier, `designs/tilesheet-template.xcf` is included pre-sized for 64x 128x256
-sprites with guides for positioning the sprites precisely.  A position overlay is also included for reference,
-though be sure to hide this layer prior to exporting.
-
-Export the merged tilemap as a PNG in `designs/tilesets/` with an identifiable name. 
-This filename will form the basis of requesting the sprite in game.
+1. Run ./sort_render.sh [COLOR_NAME]
+2. Will prompt for 0 through 13 for exports.  CTRL+F12 on each tire config when prompted.
+3. When completed, `montage.sh` will be executed with the selected colour, creating the spritemap.
 
 ## Packing
 
