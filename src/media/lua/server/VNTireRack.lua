@@ -31,7 +31,10 @@ VNTireRack.Racks = {}
 --- manually watch the containers and check if they need to be refreshed every so often.
 function VNTireRack.ScheduledUpdateCheck()
 	for index, value in ipairs(VNTireRack.Racks) do
-		VNTireRackCommon.UpdateTireRackSprite(value)
+		if value then
+			--- Only update sprites if the object is valid, should address issue #4
+			VNTireRackCommon.UpdateTireRackSprite(value)
+		end
 	end
 end
 
