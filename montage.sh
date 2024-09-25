@@ -19,6 +19,7 @@ fi
 
 cd "$HERE"
 montage designs/tiles/vn_tire_rack_${1}/tirerack_*.png -geometry 128x256 -background transparent designs/tilesets/vn_tire_rack_${1}.png
+cp designs/tilesets/vn_tire_rack_${1}.png supplemental/Tiles/2x/vn_tire_rack_${1}.png
 cd -
 
 echo "Generated spritemap for $1 tire rack"

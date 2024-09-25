@@ -12,14 +12,23 @@ if [ $# -lt 1 -o "$1" == '-h' -o "$1" == '-help' ]; then
 	exit 1
 fi
 
+# Define "here" as the directory this script is in
+HERE="$(realpath "$(dirname "$0")")"
+
+function wait_render {
+	echo "Please export tire rack with $2 tires..."
+	while [ ! -e "$HERE/designs/render/sprite0012.png" ]; do
+		sleep 1
+	done
+}
+
 if [ $# -eq 1 ]; then
 	for i in {0..13}; do
-		echo "Press [ENTER] when tire rack with $i tires has been exported..."
-		read TRASH
+		wait_render "$1" "$i"
 		$0 "$1" "$i"
 	done
 
-	"$HERE/montage.sh $1"
+	"$HERE/montage.sh" "$1"
 	exit
 fi
 
@@ -32,9 +41,6 @@ elif [ "$2" -eq "0" ]; then
 else
 	TIRE_COUNT="$2"
 fi
-
-# Define "here" as the directory this script is in
-HERE="$(realpath "$(dirname "$0")")"
 
 if [ ! -e "$HERE/designs/tiles/vn_tire_rack_$1" ]; then
 	# Create the destination directory
