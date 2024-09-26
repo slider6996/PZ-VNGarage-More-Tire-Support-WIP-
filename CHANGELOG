@@ -1,3 +1,14 @@
 [list]
-  [*]
+  [*] Add more KI5 tires thanks to slider6996 ([url=https://github.com/VeraciousNetwork/PZ-VNGarage/pull/5]Merge Request #5[/url])
+  [*] Update cost to include 10 metal pipes
+  [*] Update cost to include 1 welding rod
+  [*] Cleanup asset to have better tire coloring
+  [*] Add blue painted tire rack ([url=https://github.com/VeraciousNetwork/PZ-VNGarage/issues/3]Issue #3[/url])
+  [*] Add green painted tire rack ([url=https://github.com/VeraciousNetwork/PZ-VNGarage/issues/3]Issue #3[/url])
+  [*] Add orange painted tire rack ([url=https://github.com/VeraciousNetwork/PZ-VNGarage/issues/3]Issue #3[/url])
+  [*] Add pink painted tire rack ([url=https://github.com/VeraciousNetwork/PZ-VNGarage/issues/3]Issue #3[/url])
+  [*] Add purple painted tire rack ([url=https://github.com/VeraciousNetwork/PZ-VNGarage/issues/3]Issue #3[/url])
+  [*] Add red painted tire rack ([url=https://github.com/VeraciousNetwork/PZ-VNGarage/issues/3]Issue #3[/url])
+  [*] Add yellow painted tire rack ([url=https://github.com/VeraciousNetwork/PZ-VNGarage/issues/3]Issue #3[/url])
+  [*] Fix non-table error in some servers ([url=https://github.com/VeraciousNetwork/PZ-VNGarage/issues/4]Issue #4[/url])
 [/list]
