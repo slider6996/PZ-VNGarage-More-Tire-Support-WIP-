@@ -18,7 +18,7 @@ if [ ! -e "$HERE/designs/tiles/vn_tire_rack_$1" ]; then
 fi
 
 cd "$HERE"
-montage designs/tiles/vn_tire_rack_${1}/tirerack_*.png -geometry 128x256 -background transparent designs/tilesets/vn_tire_rack_${1}.png
+montage designs/tiles/vn_tire_rack_${1}/tirerack_*.png -tile 8x8 -geometry 128x256 -background transparent designs/tilesets/vn_tire_rack_${1}.png
 cp designs/tilesets/vn_tire_rack_${1}.png supplemental/Tiles/2x/vn_tire_rack_${1}.png
 cd -
 
