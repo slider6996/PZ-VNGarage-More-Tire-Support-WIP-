@@ -56,6 +56,7 @@ VNTireRackCommon.ValidTireNames = {
 	'75grandPrixR215Tire1',
 	'75grandPrixR217Tire3',
 	'76chevyKseriesTire2',
+	'77firebirdTire3',
 	'80chevyCKseriesTire1',
 	'80chevyCKseriesTire2',
 	'80sOffroadTireA',
