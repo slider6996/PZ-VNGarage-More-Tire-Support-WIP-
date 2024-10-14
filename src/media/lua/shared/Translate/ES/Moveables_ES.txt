@@ -1,0 +1,10 @@
+Moveables_ES = {
+	Unpainted_Tire_Rack = "Sin pintar Porta neumáticos",
+	Blue_Tire_Rack = "Azul Porta neumáticos",
+	Green_Tire_Rack = "Verde Porta neumáticos",
+	Orange_Tire_Rack = "Naranja Porta neumáticos",
+	Pink_Tire_Rack = "Rosa Porta neumáticos",
+	Purple_Tire_Rack = "Púrpura Porta neumáticos",
+	Red_Tire_Rack = "Rojo Porta neumáticos",
+	Yellow_Tire_Rack = "Amarillo Porta neumáticos"
+}

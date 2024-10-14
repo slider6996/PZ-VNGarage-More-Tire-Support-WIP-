@@ -1,0 +1,10 @@
+Moveables_DE = {
+	Unpainted_Tire_Rack = "Unbemaltes Reifenregal",
+	Blue_Tire_Rack = "Blau Reifenregal",
+	Green_Tire_Rack = "Grün Reifenregal",
+	Orange_Tire_Rack = "Orange Reifenregal",
+	Pink_Tire_Rack = "Rosa Reifenregal",
+	Purple_Tire_Rack = "Purpurrot Reifenregal",
+	Red_Tire_Rack = "Rotes Reifenregal",
+	Yellow_Tire_Rack = "Gelb Reifenregal"
+}
