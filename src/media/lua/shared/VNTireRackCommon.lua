@@ -143,6 +143,8 @@ VNTireRackCommon.ValidTireNames = {
 	'ZNL50normalTire',
 	'ZNL50oldTire',
 	'fordCVPITire1',
+        'vic92_tire',
+	'vic91_tire',
 }
 
 
