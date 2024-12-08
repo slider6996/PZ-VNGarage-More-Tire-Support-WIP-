@@ -62,6 +62,7 @@ VNTireRackCommon.ValidTireNames = {
 	'80sOffroadTireA',
 	'81deloreanDMC12Tire3',
 	'82firebirdTire3',
+	,82porsche911TurboTire',
 	'85clubManTire1',
 	'87chevySuburbanTire2',
 	'87fordB700DoubleTires2',
