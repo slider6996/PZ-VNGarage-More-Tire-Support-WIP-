@@ -62,7 +62,7 @@ VNTireRackCommon.ValidTireNames = {
 	'80sOffroadTireA',
 	'81deloreanDMC12Tire3',
 	'82firebirdTire3',
-	,82porsche911TurboTire',
+	'82porsche911TurboTire',
 	'85clubManTire1',
 	'87chevySuburbanTire2',
 	'87fordB700DoubleTires2',
@@ -262,6 +262,7 @@ function VNTireRackCommon.SetupPlacedTile(isoObject)
 		local container = isoObject:getContainer()
 
 		container:setAcceptItemFunction('VNTireRackCommon.AcceptItemFunction')
+		-- setCapacity with a value greater than 100 only works on B41.
 		container:setCapacity(180) -- 12 items of 15 weight tires
 
 		if isServer() then
@@ -286,6 +287,12 @@ function VNTireRackCommon.AcceptItemFunction(container, item)
 
 	return VNTireRackCommon.ScriptItemIsTire(sItem:getName())
 end
+
+
+--- Update the global index of container icons to include the tire rack.
+---@global
+ContainerButtonIcons = ContainerButtonIcons or {}
+ContainerButtonIcons.TireRack = getTexture("media/textures/Item_TireRackUnpainted.png")
 
 
 --- Check to see if any newly placed Tile is a tire rack and perform the adjustments if necessary.

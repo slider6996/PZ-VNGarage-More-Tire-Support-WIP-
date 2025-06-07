@@ -1,4 +1,0 @@
-Recipes_EN = {
-	Recipe_Make_Tire_Rack = "Make Tire Rack",
-	Recipe_Paint_Tire_Rack = "Paint Tire Rack"
-}

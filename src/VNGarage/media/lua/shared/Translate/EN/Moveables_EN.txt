@@ -1,4 +1,5 @@
 Moveables_EN = {
+	TireRack = "Tire Rack",
 	Unpainted_Tire_Rack = "Unpainted Tire Rack",
 	Blue_Tire_Rack = "Blue Tire Rack",
 	Green_Tire_Rack = "Green Tire Rack",
