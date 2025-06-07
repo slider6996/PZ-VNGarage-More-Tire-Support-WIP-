@@ -61,7 +61,17 @@ if [ -n "$TILES" ]; then
 		PARTS=(${TILE//:/ })
 
 		[ -d "$DEST/${PARTS[1]}/media" ] || mkdir -p "$DEST/${PARTS[1]}/media"
-		cp "$HERE/supplemental/Tiles/${PARTS[0]}" "$DEST/${PARTS[1]}/media/${PARTS[0]}"
+		if [ ${#PARTS[@]} -eq 3 ]; then
+			# Allow the user to define SOURCE:DEST:NEW_FILENAME
+			# Allows the dev to specify a different filename for the source vs destination,
+			# useful when having multiple tiles for different versions of the game which should
+			# all get generated to the same base filename inside the respective versions.
+			cp "$HERE/supplemental/Tiles/${PARTS[0]}" "$DEST/${PARTS[1]}/media/${PARTS[2]}"
+		else
+			# Normal behaviour; SOURCE:DEST
+			cp "$HERE/supplemental/Tiles/${PARTS[0]}" "$DEST/${PARTS[1]}/media/${PARTS[0]}"
+		fi
+
 	done
 fi
 

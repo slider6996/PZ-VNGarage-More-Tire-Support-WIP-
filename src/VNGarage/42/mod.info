@@ -10,6 +10,6 @@ pack=vn_garage
 tiledef=vn_garage 1300
 versionMin=42.0
 versionMax=42.999
-modversion=2025.06.xx
+modversion=
 author=Charlie Powell (cdp1337)
 require=\JB_MaxCapacityOverride,\StarlitLibrary

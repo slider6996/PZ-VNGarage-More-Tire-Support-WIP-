@@ -1,0 +1,4 @@
+Recipes_DE = {
+	Recipe_Make_Tire_Rack = "Machen Reifenregal",
+	Recipe_Paint_Tire_Rack = "Malen Reifenregal"
+}

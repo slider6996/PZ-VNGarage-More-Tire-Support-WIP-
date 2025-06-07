@@ -1,6 +1,7 @@
 ---
 --- Common functions and utilities for Veracious Network's Garage (Version B42)
 ---
+--- @see https://github.com/VeraciousNetwork/PZ-VNGarage
 --- Copyright (C) 2025  Charlie Powell <cdp1337@veraciousnetwork.com>
 ---
 --- This program is free software: you can redistribute it and/or modify
@@ -22,4 +23,11 @@
 -- https://steamcommunity.com/sharedfiles/filedetails/?id=3452113500
 -- JB_MaxCapacityOverride.addContainer = function(containerType, capacity, preventNesting, _equippedWeight)
 local JB_MaxCapacityOverride = require("JB_MaxCapacityOverride")
-JB_MaxCapacityOverride.addContainer("TireRack", 180, true)
+JB_MaxCapacityOverride.addContainer("TireRackUnpainted", 180, true)
+JB_MaxCapacityOverride.addContainer("TireRackBlue", 180, true)
+JB_MaxCapacityOverride.addContainer("TireRackGreen", 180, true)
+JB_MaxCapacityOverride.addContainer("TireRackOrange", 180, true)
+JB_MaxCapacityOverride.addContainer("TireRackPink", 180, true)
+JB_MaxCapacityOverride.addContainer("TireRackPurple", 180, true)
+JB_MaxCapacityOverride.addContainer("TireRackRed", 180, true)
+JB_MaxCapacityOverride.addContainer("TireRackYellow", 180, true)

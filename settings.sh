@@ -60,9 +60,13 @@ export MOD_VERSION="2025.06.xx"
 # TILES="mytiles1.tiles
 # mytiles2.tiles"
 #
+# To specify a different destination filename:
+# TILES="mytile_someversion.tiles:MyMod/SpecificVersion:mytile.tiles"
+#
 # If no tiles are used, leave this empty.
 #
-export TILES="vn_garage.tiles:VNGarage"
+export TILES="vn_garage_b41.tiles:VNGarage:vn_garage.tiles
+vn_garage.tiles:VNGarage/common"
 
 ##
 # Newline-separated list of packs to install
@@ -73,4 +77,5 @@ export TILES="vn_garage.tiles:VNGarage"
 #
 # If no packs are used, leave this empty.
 #
-export PACKS="vn_garage.pack:VNGarage"
+export PACKS="vn_garage.pack:VNGarage
+vn_garage.pack:VNGarage/common"

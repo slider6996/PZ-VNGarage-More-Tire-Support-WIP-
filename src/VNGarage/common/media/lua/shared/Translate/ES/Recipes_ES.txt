@@ -1,0 +1,4 @@
+Recipes_ES = {
+	Recipe_Make_Tire_Rack = "Crear Porta neumáticos",
+	Recipe_Paint_Tire_Rack = "Pintar Porta neumáticos"
+}

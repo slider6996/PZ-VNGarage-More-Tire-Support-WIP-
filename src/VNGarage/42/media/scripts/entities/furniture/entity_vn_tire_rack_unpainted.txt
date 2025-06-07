@@ -3,7 +3,7 @@ module Base {
 	xuiSkin default {
 		entity ES_TireRackUnpainted {
 			LuaWindowClass = ISEntityWindow,
-			DisplayName = Unpainted Tire Rack,
+			DisplayName = Tire Rack,
 			Icon = Item_TireRackUnpainted,
 			ToolTip = Tooltip_craft_TireRackUnpainted,
 		}
@@ -18,6 +18,7 @@ module Base {
 
 		component SpriteConfig {
 			canBePadlocked = false,
+			OnCreate = VNTireRackCommon.OnCreateRecipe,
 			face W {
 				layer {
 					row = vn_tire_rack_unpainted_3,
@@ -48,7 +49,7 @@ module Base {
 			xpAward       = MetalWelding:20,
 			category      = Welding,
 			tags          = Welding;Furniture,
-			ToolTip       = Tooltip_craft_lockerDesc,
+			ToolTip       = Tooltip_craft_TireRackUnpainted,
 			inputs {
 				item 5 [Base.MetalPipe],
                 item 1 tags[WeldingMask] mode:keep,
