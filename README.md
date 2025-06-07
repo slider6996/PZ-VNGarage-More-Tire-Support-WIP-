@@ -1,6 +1,6 @@
 # Veracious Network's Garage (Project Zomboid Mod)
 
-![VN Garage Tire Rack](workshop/preview.png)
+![VN Garage Tire Rack](src/preview.png)
 
 Links
 
