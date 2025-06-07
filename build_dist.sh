@@ -9,19 +9,6 @@ HERE="$(realpath "$(dirname "$0")")"
 source "$HERE/settings.sh"
 
 
-CHANGELOG="$(cat "$HERE/CHANGELOG")"
-if [ -z "$CHANGELOG" ]; then
-	echo "ERROR: Please enter a note of changes in $HERE/CHANGELOG"
-	exit 1
-fi
-
-if [ "$CHANGELOG" == "[list]
-  [*]
-[/list]" ]; then
-	echo "ERROR: Please enter a note of changes in $HERE/CHANGELOG"
-	exit 1
-fi
-
 if [ ! -e "$HERE/DESCRIPTION.bbcode" ]; then
 	echo "ERROR: Please create a DESCRIPTION.bbcode with the contents of the mod description"
 	exit 1
@@ -30,9 +17,9 @@ fi
 
 # Set target directory for local testing
 if [ -n "$MOD_VERSION" ]; then
-	DIST="$HERE/dist/$MOD_VERSION"
+	DIST="$HERE/dist/$MOD_NAME-$MOD_VERSION"
 else
-	DIST="$HERE/dist/$(date +%Y%m%d.%H%M)"
+	DIST="$HERE/dist/$MOD_NAME-$(date +%Y%m%d.%H%M)"
 fi
 DEST="$DIST/Contents/mods"
 
@@ -47,9 +34,7 @@ fi
 MOD_DESCRIPTION="$(cat "$HERE/DESCRIPTION.bbcode" | sed 's:":\&quot;:g')"
 
 
-if [ ! -d "$DEST" ]; then
-	mkdir -p "$DEST"
-fi
+[ -d "$DEST" ] || mkdir -p "$DEST"
 
 # Sync local mod code
 rsync "$HERE/src/" "$DEST/" -r --delete
@@ -80,13 +65,23 @@ if [ -n "$PACKS" ]; then
 	for PACK in $PACKS; do
 		# Split tile line by a colon for mod:tile file
 		PARTS=(${PACK//:/ })
+
 		[ -d "$DEST/${PARTS[1]}/media/texturepacks" ] || mkdir -p "$DEST/${PARTS[1]}/media/texturepacks"
-		cp "$HERE/supplemental/Packs/${PARTS[0]}" "$DEST/${PARTS[1]}/media/texturepacks/${PARTS[0]}"
+		if [ ${#PARTS[@]} -eq 3 ]; then
+			# Allow the user to define SOURCE:DEST:NEW_FILENAME
+			# Allows the dev to specify a different filename for the source vs destination,
+			# useful when having multiple tiles for different versions of the game which should
+			# all get generated to the same base filename inside the respective versions.
+			cp "$HERE/supplemental/Packs/${PARTS[0]}" "$DEST/${PARTS[1]}/media/texturepacks/${PARTS[2]}"
+		else
+			# Normal behaviour; SOURCE:DEST
+			cp "$HERE/supplemental/Packs/${PARTS[0]}" "$DEST/${PARTS[1]}/media/texturepacks/${PARTS[0]}"
+		fi
 	done
 fi
 
 # Deploy Steam-specific content
-cp "$HERE/workshop/preview.png" "$DIST/preview.png"
+cp "$HERE/src/preview.png" "$DIST/preview.png"
 
 # Build the metadata VDF file, this is what steamcmd uses to know where everything is located
 cat > "$DIST/metadata.vdf" << EOD
@@ -98,7 +93,6 @@ cat > "$DIST/metadata.vdf" << EOD
   "visibility" "0"
   "title" "$MOD_TITLE"
   "description" "$MOD_DESCRIPTION"
-  "changenote" "$CHANGELOG"
 }
 EOD
 
@@ -129,6 +123,7 @@ if [ -n "$MOD_VERSION" ]; then
 			sed -i "s/modversion=.*/modversion=$MOD_VERSION/" "$FILE"
 		else
 			# If not, append it to the end of the file
+			echo "" >> "$FILE"
 			echo "modversion=$MOD_VERSION" >> "$FILE"
 		fi
 	done

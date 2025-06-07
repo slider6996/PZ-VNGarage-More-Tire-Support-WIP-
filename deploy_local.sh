@@ -10,9 +10,6 @@ source "$HERE/settings.sh"
 
 LOCAL="$HOME/Zomboid/Workshop/$MOD_NAME"
 
-# Sync local tilesets to working directory for TileZed
-rsync "$HERE/designs/tilesets/" "$HERE/supplemental/Tiles/2x" -r
-
 # Build a full distributable copy
 # defines DIST as the target of the distributable version
 source "$HERE/build_dist.sh"
@@ -21,7 +18,7 @@ source "$HERE/build_dist.sh"
 # along with the necessary Steam files
 [ -d "$LOCAL/Contents/mods" ] || mkdir -p "$LOCAL/Contents/mods"
 cp "$DIST/workshop.txt" "$LOCAL/workshop.txt"
-rsync "$HERE/workshop/" "$LOCAL/" -r
+cp "$DIST/preview.png" "$LOCAL/preview.png"
 
 # Copy any mods within the full distributable copy to a local DEV version
 ls -1 "$DIST/Contents/mods" | while read IFILE; do
