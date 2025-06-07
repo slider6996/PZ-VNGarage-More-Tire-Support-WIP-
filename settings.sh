@@ -33,6 +33,13 @@ export MOD_TAGS="Build 41;Build 42;Building;Multiplayer;Realistic"
 export MOD_VISIBILITY="public"
 
 ##
+# Set to the mod version to show inside Project Zomboid.
+#
+# Should be a string that only contains letters, numbers, periods, underscores, tilde, or dashes.
+# Used to set `modversion=` within `mod.info` files.
+export MOD_VERSION="2025.06.xx"
+
+##
 # Description for Steam Workshop, supports BBCode
 # @see https://www.bbcode.org/how-to-use-bbcode-a-complete-guide.php
 #

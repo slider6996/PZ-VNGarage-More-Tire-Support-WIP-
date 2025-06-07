@@ -24,25 +24,11 @@ cp "$DIST/workshop.txt" "$LOCAL/workshop.txt"
 rsync "$HERE/workshop/" "$LOCAL/" -r
 
 # Copy any mods within the full distributable copy to a local DEV version
-ls -1 "$DIST/content/mods" | while read IFILE; do
-	if [ -d "$DIST/content/mods/$IFILE" ]; then
+ls -1 "$DIST/Contents/mods" | while read IFILE; do
+	if [ -d "$DIST/Contents/mods/$IFILE" ]; then
 		# Located path is a directory
 		# Sync that directory to the local mods directory.
-		rsync "$DIST/content/mods/$IFILE/" "$LOCAL/Contents/mods/$IFILE" -r --delete
-
-		#if [ -e "$LOCAL/DEV_$IFILE/mod.info" ]; then
-		#	# Swap target name to differentiate between production version and dev version.
-		#	# This causes issues otherwise if the Workshop version is subscribed to;
-		#	# that version will take precedence over the local version.
-		#	sed -i "s/id=\(.*\)/id=DEV_\1/" "$LOCAL/DEV_$IFILE/mod.info"
-		#fi
-
-		#if [ -e "$LOCAL/DEV_$IFILE/42/mod.info" ]; then
-		#	# Swap target name to differentiate between production version and dev version.
-		#	# This causes issues otherwise if the Workshop version is subscribed to;
-		#	# that version will take precedence over the local version.
-		#	sed -i "s/id=\(.*\)/id=DEV_\1/" "$LOCAL/DEV_$IFILE/42/mod.info"
-		#fi
+		rsync "$DIST/Contents/mods/$IFILE/" "$LOCAL/Contents/mods/$IFILE" -r --delete
 
 		echo "Deployed local mod $IFILE"
 

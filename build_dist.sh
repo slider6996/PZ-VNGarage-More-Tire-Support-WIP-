@@ -29,8 +29,17 @@ fi
 
 
 # Set target directory for local testing
-DIST="$HERE/dist/$(date +%Y%m%d.%H%M)"
-DEST="$DIST/content/mods"
+if [ -n "$MOD_VERSION" ]; then
+	DIST="$HERE/dist/$MOD_VERSION"
+else
+	DIST="$HERE/dist/$(date +%Y%m%d.%H%M)"
+fi
+DEST="$DIST/Contents/mods"
+
+# Ensure a clean working directory
+if [ -n "$DIST" -a -d "$DIST" ]; then
+	rm -rf "$DIST"
+fi
 
 # The mod contents is now contained inside DESCRIPTION
 # it was getting too unwieldy to be in a simple variable.
@@ -74,7 +83,7 @@ cat > "$DIST/metadata.vdf" << EOD
 "workshopitem" {
   "appid" "108600"
   "publishedfileid" "$WORKSHOP_ID"
-  "contentfolder" "$DIST/content"
+  "contentfolder" "$DIST/Contents"
   "previewfile" "$DIST/preview.png"
   "visibility" "0"
   "title" "$MOD_TITLE"
@@ -98,5 +107,21 @@ fi
 
 cat DESCRIPTION.bbcode | sed 's:^:description=:g' >> "$DIST/workshop.txt"
 
+
+# Set the mod version inside the PZ mod files
+# The user could manually set this within the files, but this allows
+# them to set it once in settings.sh and have it applied automatically.
+if [ -n "$MOD_VERSION" ]; then
+	find "$DEST" -type f -name "mod.info" | while read FILE; do
+		# Check if "modversion=" is already present in the file
+		if grep -qi "modversion=" "$FILE"; then
+			# If it is, replace it with the new version
+			sed -i "s/modversion=.*/modversion=$MOD_VERSION/" "$FILE"
+		else
+			# If not, append it to the end of the file
+			echo "modversion=$MOD_VERSION" >> "$FILE"
+		fi
+	done
+fi
 
 echo "Bundled mod in $DIST"
