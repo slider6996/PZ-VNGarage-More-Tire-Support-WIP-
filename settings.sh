@@ -18,7 +18,19 @@ export MOD_TITLE="Veracious Network's Garage"
 #
 export WORKSHOP_ID=3133520800
 
-export MOD_TAGS="Build 41, Building, Multiplayer, Realistic"
+##
+# Tags to set for Steam workshop, refer to the currently supported tags
+# and separate each tag with a semicolon (;)
+export MOD_TAGS="Build 41;Build 42;Building;Multiplayer;Realistic"
+
+##
+# Set the visibility for Steam, recommended to be 'public' for published mods.
+# Supported values are:
+# public
+# friends
+# private
+# unlisted
+export MOD_VISIBILITY="public"
 
 ##
 # Description for Steam Workshop, supports BBCode
@@ -43,7 +55,7 @@ export MOD_TAGS="Build 41, Building, Multiplayer, Realistic"
 #
 # If no tiles are used, leave this empty.
 #
-export TILES="vn_garage.tiles"
+export TILES="vn_garage.tiles:VNGarage"
 
 ##
 # Newline-separated list of packs to install
@@ -54,4 +66,4 @@ export TILES="vn_garage.tiles"
 #
 # If no packs are used, leave this empty.
 #
-export PACKS="vn_garage.pack"
+export PACKS="vn_garage.pack:VNGarage"

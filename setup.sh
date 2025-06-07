@@ -63,6 +63,19 @@ if [ ! -e "$HERE/supplemental/BlenderResources/blenderkit-v3.12.3.240801.zip" ];
 	wget https://github.com/BlenderKit/BlenderKit/releases/download/v3.12.3.240801/blenderkit-v3.12.3.240801.zip -O "$HERE/supplemental/BlenderResources/blenderkit-v3.12.3.240801.zip"
 fi
 
+# Sync game assets
+find "$PZ_DIR_PATH" -name '*.tiles' | while read TILE; do
+	# Copy tiles to the local mod directory
+	# This is useful for TileZed to be able to load the tilesets.
+	cp "$TILE" "$HERE/supplemental/Tiles/"
+done
+
+find "$PZ_DIR_PATH/media/texturepacks" -name '*.pack' | while read PACK; do
+	# Copy packs to the local mod directory
+	# This is useful for TileZed to be able to load the packs.
+	cp "$PACK" "$HERE/supplemental/Packs/"
+done
+
 # Generate game documentation via pz-zdoc
 sh "$HERE/supplemental/pz-zdoc-3.1.0/bin/pz-zdoc" annotate -i "$PZ_DIR_PATH/media/lua" -o "$HERE/libs/media/lua"
 sh "$HERE/supplemental/pz-zdoc-3.1.0/bin/pz-zdoc" compile -i "$PZ_DIR_PATH" -o "$HERE/libs/media/lua/shared/Library"

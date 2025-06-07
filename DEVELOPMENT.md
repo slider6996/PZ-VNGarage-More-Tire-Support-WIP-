@@ -12,7 +12,7 @@ Open `settings.sh` and edit to fit your needs.  Enter the mod name, title, descr
 
 ### Setup local environment
 
-Running `setup.sh` will setup the local environment for development...
+Running `setup.sh` will set up the local environment for development...
 
 1. Downloads latest official tilesets and sprites
 2. Installs TileZed/WorldEd
@@ -61,8 +61,20 @@ This is useful for testing prior to deployment.
 
 Make sure you've already setup `settings.sh` prior to running this script.
 
+This will deploy the mod code to `~/Zomboid/Workshop/(MODNAME)` and prepped to be either tested locally
+or uploaded to the Steam Workshop from within the game client.
+
 
 ## Deploying to Steam Workshop
+
+Deploying to the Steam Workshop can be done from within the game client or via the `deploy_dist.sh` script.
+
+### For deployment from within the game:
+
+Ensure that you copy the Workshop ID to `settings.sh` as `WORKSHOP_ID` once you uploaded your first mod.
+This will let the game client track the mod for future updates.
+
+### For the deployment script:
 
 Create a file called `.secret` which contains your Steam username, (and optionally password).
 
