@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="52.560875"
+   height="52.560886"
+   viewBox="0 0 13.906731 13.906734"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="tag-save-100.svg"
+   inkscape:export-filename="tag-save-100.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="4.1"
+     inkscape:cx="13.170732"
+     inkscape:cy="32.682927"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-82.178889,-90.558548)">
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#008000;stroke-width:0.570177;stroke-miterlimit:10;stroke-opacity:1"
+       id="path1172"
+       sodipodi:type="arc"
+       sodipodi:cx="89.132256"
+       sodipodi:cy="97.511917"
+       sodipodi:rx="6.6682763"
+       sodipodi:ry="6.6682763"
+       sodipodi:start="0"
+       sodipodi:end="6.2726564"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="m 95.800532,97.511917 a 6.6682763,6.6682763 0 0 1 -6.650724,6.668253 6.6682763,6.6682763 0 0 1 -6.685736,-6.633148 6.6682763,6.6682763 0 0 1 6.615527,-6.703173 6.6682763,6.6682763 0 0 1 6.720563,6.59786" />
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:3.52777px;font-family:FreeSans;-inkscape-font-specification:'FreeSans Bold';fill:#008000;stroke:none;stroke-width:0.570177;stroke-miterlimit:10"
+       x="84.091743"
+       y="96.717628"
+       id="text236"><tspan
+         sodipodi:role="line"
+         id="tspan234"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:FreeSans;-inkscape-font-specification:FreeSans;fill:#008000;stroke:none;stroke-width:0.570177"
+         x="84.091743"
+         y="96.717628">SAVE</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:2.42556px;font-family:FreeSans;-inkscape-font-specification:'FreeSans Bold';fill:#008000;stroke:none;stroke-width:0.392033;stroke-miterlimit:10"
+       x="83.831856"
+       y="99.515198"
+       id="text236-7"><tspan
+         sodipodi:role="line"
+         id="tspan234-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:FreeSans;-inkscape-font-specification:FreeSans;fill:#008000;stroke:none;stroke-width:0.392033"
+         x="83.831856"
+         y="99.515198">$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:5.17638px;font-family:FreeSans;-inkscape-font-specification:'FreeSans Bold';fill:#008000;stroke:none;stroke-width:0.836635;stroke-miterlimit:10"
+       x="85.084801"
+       y="101.35478"
+       id="text236-2"><tspan
+         sodipodi:role="line"
+         id="tspan234-3"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';fill:#008000;stroke:none;stroke-width:0.836635"
+         x="85.084801"
+         y="101.35478">100</tspan></text>
+  </g>
+</svg>
