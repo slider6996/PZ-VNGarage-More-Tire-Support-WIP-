@@ -14,9 +14,10 @@ Open `settings.sh` and edit to fit your needs.  Enter the mod name, title, descr
 
 Running `setup.sh` will set up the local environment for development...
 
-1. Downloads latest official tilesets and sprites
-2. Installs TileZed/WorldEd
-3. Installs and runs pz-zdoc to generate game documentation from your live game code
+1. Loads game tiles and packs
+2. Installs [TileZed/WorldEd](https://theindiestone.com/forums/index.php?/topic/59675-latest-tilezed-worlded-and-tilesets-september-8-2022/)
+3. Installs and runs [pz-zdoc](https://github.com/cocolabs/pz-zdoc) to generate game documentation from your live game code
+4. Downloads [BlenderKit](https://github.com/BlenderKit/BlenderKit) to supplemental/BlenderResources for convenience
 
 This setup generally only needs to be run once.
 
