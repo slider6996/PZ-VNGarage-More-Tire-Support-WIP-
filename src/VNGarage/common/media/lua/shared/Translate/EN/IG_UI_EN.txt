@@ -6,4 +6,5 @@ IGUI_EN = {
 	IGUI_ContainerTitle_TireRackPink = "Tire Rack (Pink)",
 	IGUI_ContainerTitle_TireRackRed = "Tire Rack (Red)",
 	IGUI_ContainerTitle_TireRackYellow = "Tire Rack (Yellow)",
+	IGUI_ContainerTitle_VNBatteryShelf = "Battery Shelf",
 }
