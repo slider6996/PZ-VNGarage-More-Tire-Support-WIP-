@@ -18,6 +18,7 @@
 --- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ---@global
+VNGarage = VNGarage or {}
 VNTireRackCommon = {}
 
 
