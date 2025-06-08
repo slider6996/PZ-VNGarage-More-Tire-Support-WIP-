@@ -5,7 +5,6 @@ module Base {
 			LuaWindowClass = ISEntityWindow,
 			DisplayName = Tire Rack,
 			Icon = Item_TireRackUnpainted,
-			ToolTip = Tooltip_craft_TireRackUnpainted,
 		}
 	}
 
