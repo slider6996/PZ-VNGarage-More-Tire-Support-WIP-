@@ -22,24 +22,12 @@ if not isServer() then return end
 
 ---@global
 VNGarage = VNGarage or {}
-VNGarage.BatteryShelfServer = VNGarage.BatteryShelfServer or {}
-
--- Persistent storage of all tire racks in the game
+VNGarage.BatteryShelf = VNGarage.BatteryShelf or {}
+-- Persistent storage of all shelves in the game
 -- Used to walk through in the cron job.
-VNGarage.BatteryShelfServer.Shelves = {}
-
---- Since the server handles updateSprites in Java and does not expose a mechanism for triggering this,
---- manually watch the containers and check if they need to be refreshed every so often.
-function VNGarage.BatteryShelfServer.ScheduledUpdateCheck()
-	for _, value in ipairs(VNGarage.BatteryShelfServer.Shelves) do
-		if value then
-			--- Only update sprites if the object is valid, should address issue #4
-			VNGarage.BatteryShelfCommon.UpdateSprite(value)
-		end
-	end
-end
+VNGarage.BatteryShelf.Shelves = VNGarage.BatteryShelf.Shelves or {}
 
 
 -- The server does not expose a mechanism for updating inventory (at least that I could find),
 -- so attach a call to run every "10 minutes" in game to refresh the sprites of all tire racks.
-Events.EveryTenMinutes.Add(VNGarage.BatteryShelfServer.ScheduledUpdateCheck)
+Events.EveryTenMinutes.Add(VNGarage.BatteryShelf.ScheduledCheck)

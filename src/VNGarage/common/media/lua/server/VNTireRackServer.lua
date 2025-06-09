@@ -21,19 +21,20 @@
 if not isServer() then return end
 
 ---@global
-VNTireRackServer = VNTireRackServer or {}
+VNGarage = VNGarage or {}
+VNGarage.TireRack = VNGarage.TireRack or {}
 
 -- Persistent storage of all tire racks in the game
 -- Used to walk through in the cron job.
-VNTireRackServer.Racks = {}
+VNGarage.TireRack.Racks = {}
 
 --- Since the server handles updateSprites in Java and does not expose a mechanism for triggering this,
 --- manually watch the containers and check if they need to be refreshed every so often.
-function VNTireRackServer.ScheduledUpdateCheck()
-	for index, value in ipairs(VNTireRack.Racks) do
+function VNGarage.TireRack.ScheduledUpdateCheck()
+	for index, value in ipairs(VNGarage.TireRack.Racks) do
 		if value then
 			--- Only update sprites if the object is valid, should address issue #4
-			VNTireRackCommon.UpdateTireRackSprite(value)
+			VNGarage.TireRack.UpdateTireRackSprite(value)
 		end
 	end
 end
@@ -41,4 +42,4 @@ end
 
 -- The server does not expose a mechanism for updating inventory (at least that I could find),
 -- so attach a call to run every "10 minutes" in game to refresh the sprites of all tire racks.
-Events.EveryTenMinutes.Add(VNTireRackServer.ScheduledUpdateCheck)
+Events.EveryTenMinutes.Add(VNGarage.TireRack.ScheduledUpdateCheck)

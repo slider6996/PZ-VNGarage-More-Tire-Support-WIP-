@@ -51,10 +51,10 @@ if [ -n "$TILES" ]; then
 			# Allows the dev to specify a different filename for the source vs destination,
 			# useful when having multiple tiles for different versions of the game which should
 			# all get generated to the same base filename inside the respective versions.
-			cp "$HERE/supplemental/Tiles/${PARTS[0]}" "$DEST/${PARTS[1]}/media/${PARTS[2]}"
+			cp "$HERE/designs/Tiles/${PARTS[0]}" "$DEST/${PARTS[1]}/media/${PARTS[2]}"
 		else
 			# Normal behaviour; SOURCE:DEST
-			cp "$HERE/supplemental/Tiles/${PARTS[0]}" "$DEST/${PARTS[1]}/media/${PARTS[0]}"
+			cp "$HERE/designs/Tiles/${PARTS[0]}" "$DEST/${PARTS[1]}/media/${PARTS[0]}"
 		fi
 
 	done
@@ -72,10 +72,10 @@ if [ -n "$PACKS" ]; then
 			# Allows the dev to specify a different filename for the source vs destination,
 			# useful when having multiple tiles for different versions of the game which should
 			# all get generated to the same base filename inside the respective versions.
-			cp "$HERE/supplemental/Packs/${PARTS[0]}" "$DEST/${PARTS[1]}/media/texturepacks/${PARTS[2]}"
+			cp "$HERE/designs/Packs/${PARTS[0]}" "$DEST/${PARTS[1]}/media/texturepacks/${PARTS[2]}"
 		else
 			# Normal behaviour; SOURCE:DEST
-			cp "$HERE/supplemental/Packs/${PARTS[0]}" "$DEST/${PARTS[1]}/media/texturepacks/${PARTS[0]}"
+			cp "$HERE/designs/Packs/${PARTS[0]}" "$DEST/${PARTS[1]}/media/texturepacks/${PARTS[0]}"
 		fi
 	done
 fi

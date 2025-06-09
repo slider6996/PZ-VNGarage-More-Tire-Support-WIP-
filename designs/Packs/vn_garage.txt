@@ -1,0 +1,12 @@
+version = 0
+settings
+{
+    packFileName = vn_garage.pack
+    outputImageSize = 1024,1024
+    scale50 = false
+    inputImageDirectory
+    {
+        path = ../../designs/tilesets
+        imagesAreTilesheets = true
+    }
+}

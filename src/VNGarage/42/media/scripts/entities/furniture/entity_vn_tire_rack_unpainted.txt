@@ -17,7 +17,7 @@ module Base {
 
 		component SpriteConfig {
 			canBePadlocked = false,
-			OnCreate = VNTireRackCommon.OnCreateRecipe,
+			OnCreate = VNGarage.TireRack.OnCreateRecipe,
 			face W {
 				layer {
 					row = vn_tire_rack_unpainted_3,
