@@ -6,7 +6,11 @@ settings
     scale50 = false
     inputImageDirectory
     {
-        path = ../../designs/tilesets
+        path = ../Tiles/2x
         imagesAreTilesheets = true
+    }
+    tileDef
+    {
+        path = ../Tiles/vn_garage.tiles
     }
 }
