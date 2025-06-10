@@ -37,7 +37,7 @@ export MOD_VISIBILITY="public"
 #
 # Should be a string that only contains letters, numbers, periods, underscores, tilde, or dashes.
 # Used to set `modversion=` within `mod.info` files.
-export MOD_VERSION="2025.06.09"
+export MOD_VERSION="2025.06.NEXT"
 
 ##
 # Description for Steam Workshop, supports BBCode
