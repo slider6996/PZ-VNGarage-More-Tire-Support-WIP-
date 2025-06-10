@@ -16,10 +16,15 @@
 ---
 --- You should have received a copy of the GNU Affero General Public License
 --- along with this program.  If not, see <https://www.gnu.org/licenses/>.
+---
+--- Load order of scripts: `shared`, then `client`, then `server`.
 
 ---@global
 VNGarage = VNGarage or {}
 VNGarage.TireRack = VNGarage.TireRack or {}
+-- Persistent storage of all tire racks in the game
+-- Used to walk through in the cron job.
+VNGarage.TireRack.Racks = {}
 
 
 --- Simple list of valid tire KeyNames within the game.
@@ -310,6 +315,18 @@ function VNGarage.TireRack.AcceptItemFunction(container, item)
 	end
 
 	return VNGarage.TireRack.ScriptItemIsTire(sItem:getName())
+end
+
+
+--- Since the server handles updateSprites in Java and does not expose a mechanism for triggering this,
+--- manually watch the containers and check if they need to be refreshed every so often.
+function VNGarage.TireRack.ScheduledUpdateCheck()
+	for index, value in ipairs(VNGarage.TireRack.Racks) do
+		if value then
+			--- Only update sprites if the object is valid, should address issue #4
+			VNGarage.TireRack.UpdateTireRackSprite(value)
+		end
+	end
 end
 
 
