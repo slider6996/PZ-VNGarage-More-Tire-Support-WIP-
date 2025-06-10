@@ -26,11 +26,41 @@ local function LoadContainerData()
 			[1] = {
 				["size"] = {
 					["width"] = 20,
-					["height"] = 18
+					["height"] = 6
 				},
 				["position"] = {
 					["x"] = 0,
 					["y"] = 0
+				}
+			},
+			[2] = {
+				["size"] = {
+					["width"] = 20,
+					["height"] = 6
+				},
+				["position"] = {
+					["x"] = 0,
+					["y"] = 6
+				}
+			},
+			[3] = {
+				["size"] = {
+					["width"] = 20,
+					["height"] = 6
+				},
+				["position"] = {
+					["x"] = 0,
+					["y"] = 12
+				}
+			},
+			[4] = {
+				["size"] = {
+					["width"] = 20,
+					["height"] = 6
+				},
+				["position"] = {
+					["x"] = 0,
+					["y"] = 18
 				}
 			}
 		}
@@ -41,11 +71,21 @@ local function LoadContainerData()
 			[1] = {
 				["size"] = {
 					["width"] = 12,
-					["height"] = 6
+					["height"] = 3
 				},
 				["position"] = {
 					["x"] = 0,
 					["y"] = 0
+				}
+			},
+			[2] = {
+				["size"] = {
+					["width"] = 12,
+					["height"] = 3
+				},
+				["position"] = {
+					["x"] = 0,
+					["y"] = 3
 				}
 			}
 		}
