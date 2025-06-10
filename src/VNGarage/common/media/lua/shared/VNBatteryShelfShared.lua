@@ -110,6 +110,8 @@ function VNGarage.BatteryShelf.UpdateSprite(isoObject)
 		spriteOverlay = base .. tostring(orientation + (4 * len))
 	end
 
+	-- @todo Check if (spriteOverlay, true) works instead of a cron watch in B42.
+	-- The new code from zombie/iso/IsoObject.class supports network calls within this method.
 	isoObject:setOverlaySprite(spriteOverlay)
 
 	if isServer() then

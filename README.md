@@ -13,6 +13,7 @@ Links
 Veracious Network's Garage is a mod for Project Zomboid that provides the following features:
 
 * Tire rack
+* Battery Shelf with integrated charger
 * (more to come)  Currently adding all of KI5 Vehicle and will add more from other Authors as well.
 
 * KI5 Vehicles DONE 100% ****
@@ -35,3 +36,13 @@ ie: if you store 5 tires, you will see 5 tires on the rack.
 ## Development
 
 Check the [Development Guide](DEVELOPMENT.md) for information on working with this repository.
+
+## License
+
+Code is released under the AGPLv3.
+
+Some image sprites are directly based off game assets from The Indie Stone, and are included for non-commercial use
+to be used within Project Zomboid only.
+Thanks to The Indie Stone for creating [Project Zomboid](http://projectzomboid.com/), which made this possible.
+This is an unofficial fan production for non-commercial purposes made under
+[the Indie Stone Terms](https://theindiestone.com/forums/index.php?/topic/2530-mod-permissions/#comment-36481).
