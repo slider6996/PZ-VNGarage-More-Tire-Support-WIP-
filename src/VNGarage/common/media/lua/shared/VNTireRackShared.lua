@@ -242,11 +242,11 @@ function VNGarage.TireRack.UpdateTireRackSprite(isoObject)
 
 	-- Retrieve the base sprite name, this will be the "type" of tire rack.
 	-- ie: trims off the [0-3] orientation value.
-	local base = string.match(sprite:getName(), '.*_')
+	local base = 'vn_tire_rack_tires_'
 
 	-- Use the number of items currently in the inventory to adjust the sprite position.
-	-- Positions 0 - 3 are 0 qty,
-	-- Positions 4 - 7 are 1 qty,
+	-- Positions 0 - 3 are 1 qty,
+	-- Positions 4 - 7 are 2 qty,
 	-- etc.  (P + 4*len) will provide the accurate positional sprite.
 	local len = container:getItems():size()
 
@@ -262,10 +262,10 @@ function VNGarage.TireRack.UpdateTireRackSprite(isoObject)
 
 	if len > 12 then
 		-- Failsafe as there are only 12 sets of sprites in the spritemap (plus one overflow)
-		isoObject:setOverlaySprite(base .. tostring(orientation + (4 * 13)))
+		isoObject:setOverlaySprite(base .. tostring(orientation + (4 * 13) - 4))
 	elseif len > 0 then
 		-- At least 1 tire, but less than 13.  Standard sprites.
-		isoObject:setOverlaySprite(base .. tostring(orientation + (4 * len)))
+		isoObject:setOverlaySprite(base .. tostring(orientation + (4 * len) - 4))
 	else
 		-- No tires, just remove the sprite overlay.
 		isoObject:setOverlaySprite(nil)

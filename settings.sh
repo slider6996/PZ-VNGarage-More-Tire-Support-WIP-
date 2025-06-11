@@ -77,5 +77,5 @@ vn_garage.tiles:VNGarage/common"
 #
 # If no packs are used, leave this empty.
 #
-export PACKS="vn_garage.pack:VNGarage
+export PACKS="vn_garage_b41.pack:VNGarage
 vn_garage.pack:VNGarage/common"

@@ -28,22 +28,22 @@ fi
 export PZ_DIR_PATH="$(echo "$P" | sed 's:JVM=\(.*\)/jre64/lib/server/libjvm.so:\1:')"
 
 # Ensure all the necessary directories in the project exist
-[ -d "$HERE/supplemental/Tiles" ] || mkdir -p "$HERE/supplemental/Tiles"
-[ -d "$HERE/supplemental/Packs" ] || mkdir -p "$HERE/supplemental/Packs"
+#[ -d "$HERE/supplemental/Tiles" ] || mkdir -p "$HERE/supplemental/Tiles"
+#[ -d "$HERE/supplemental/Packs" ] || mkdir -p "$HERE/supplemental/Packs"
 [ -d "$HERE/supplemental/BlenderResources" ] || mkdir -p "$HERE/supplemental/BlenderResources"
 
 # Sync assets from the game installation
-find "$PZ_DIR_PATH" -name '*.tiles' | while read TILE; do
+#find "$PZ_DIR_PATH" -name '*.tiles' | while read TILE; do
 	# Copy tiles to the local mod directory
 	# This is useful for TileZed to be able to load the tilesets.
-	cp "$TILE" "$HERE/supplemental/Tiles/"
-done
+#	cp "$TILE" "$HERE/supplemental/Tiles/"
+#done
 
-find "$PZ_DIR_PATH/media/texturepacks" -name '*.pack' | while read PACK; do
+#find "$PZ_DIR_PATH/media/texturepacks" -name '*.pack' | while read PACK; do
 	# Copy packs to the local mod directory
 	# This is useful for TileZed to be able to load the packs.
-	cp "$PACK" "$HERE/supplemental/Packs/"
-done
+#	cp "$PACK" "$HERE/supplemental/Packs/"
+#done
 
 # Sync local tilesets to working directory for TileZed
 # These contain tilemaps for mod tiles
@@ -72,6 +72,11 @@ fi
 # Download BlenderKit for goodies within Blender
 if [ ! -e "$HERE/supplemental/BlenderResources/blenderkit-v3.16.0.250530.zip" ]; then
 	wget https://github.com/BlenderKit/BlenderKit/releases/download/v3.16.0.250530/blenderkit-v3.16.0.250530.zip -O "$HERE/supplemental/BlenderResources/blenderkit-v3.16.0.250530.zip"
+fi
+
+# Download Blender io_import_x
+if [ ! -e "$HERE/supplemental/BlenderResources/io_import_x-master.zip" ]; then
+	wget https://github.com/Poikilos/io_import_x/archive/refs/heads/master.zip -O "$HERE/supplemental/BlenderResources/io_import_x-master.zip"
 fi
 
 
