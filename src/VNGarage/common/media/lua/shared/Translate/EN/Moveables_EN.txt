@@ -7,5 +7,6 @@ Moveables_EN = {
 	Pink_Tire_Rack = "Pink Tire Rack",
 	Purple_Tire_Rack = "Purple Tire Rack",
 	Red_Tire_Rack = "Red Tire Rack",
-	Yellow_Tire_Rack = "Yellow Tire Rack"
+	Yellow_Tire_Rack = "Yellow Tire Rack",
+	VNGarage_DoubleWidth_Workbench = "Workbench"
 }

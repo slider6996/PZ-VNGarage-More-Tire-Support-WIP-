@@ -1,0 +1,16 @@
+module VNGarage {
+	imports {
+		Base
+	}
+
+	item VNWorkbench {
+		type = Moveable,
+		displayName = Workbench,
+		displayCategory = Furniture,
+		icon = VNWorkbench,
+		weight = 12,
+		tags = Workbench,
+		worldObjectSprite = vn_battery_shelf_0,
+		capacity = 10,
+	}
+}
