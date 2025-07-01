@@ -40,42 +40,20 @@ export MOD_VISIBILITY="public"
 export MOD_VERSION="2025.06.NEXT"
 
 ##
-# Description for Steam Workshop, supports BBCode
-# @see https://www.bbcode.org/how-to-use-bbcode-a-complete-guide.php
+# Newline-separated list of source spritemaps that should get deployed for each Pack.
 #
-# Quick ref:
-# [b]bold text[/b]
-# [i]italic text[/i]
-# [u]underlined text[/u]
-# [s]strikethrough text[/s]
-# [url=link]text[/url]
-# [img]link[/img]
-#
-# MOVED TO `DESCRIPTION.bbcode`
-
-##
-# Newline-separated list of tiles to install
-#
-# ex:
-# TILES="mytiles1.tiles
-# mytiles2.tiles"
-#
-# To specify a different destination filename:
-# TILES="mytile_someversion.tiles:MyMod/SpecificVersion:mytile.tiles"
-#
-# If no tiles are used, leave this empty.
-#
-export TILES="vn_garage_b41.tiles:VNGarage:vn_garage.tiles
-vn_garage.tiles:VNGarage/common"
-
-##
-# Newline-separated list of packs to install
-#
-# ex:
-# TILES="mypacks1.pack
-# mypacks2.pack"
-#
-# If no packs are used, leave this empty.
-#
-export PACKS="vn_garage_b41.pack:VNGarage
-vn_garage.pack:VNGarage/common"
+# Format is: source_tilemap:destination_pack
+# where source_tilemap refers to "source_tilemap.png" in the Tiles/2x directory,
+# and destination_pack refers to "destination_pack.pack" in the Packs/ directory.
+export PACK_SOURCES="vn_battery_shelf:vn_garage
+vn_tire_rack_tires:vn_garage
+vn_tire_rack_blue:vn_garage
+vn_tire_rack_green:vn_garage
+vn_tire_rack_orange:vn_garage
+vn_tire_rack_pink:vn_garage
+vn_tire_rack_purple:vn_garage
+vn_tire_rack_red:vn_garage
+vn_tire_rack_yellow:vn_garage
+vn_tire_rack_unpainted:vn_garage
+vn_workbench:vn_garage
+vn_workbench_items_01:vn_garage"

@@ -39,46 +39,84 @@ MOD_DESCRIPTION="$(cat "$HERE/DESCRIPTION.bbcode" | sed 's:":\&quot;:g')"
 # Sync local mod code
 rsync "$HERE/src/" "$DEST/" -r --delete
 
-# Install any tiles (if present)
-if [ -n "$TILES" ]; then
-	for TILE in $TILES; do
-		# Split tile line by a colon for mod:tile file
-		PARTS=(${TILE//:/ })
+# Scan through the mod declarations for tiles and packs to deploy
+find "$DEST" -name mod.info | while read INFO; do
+	MOD="${INFO:${#DEST}+1:-9}"
 
-		[ -d "$DEST/${PARTS[1]}/media" ] || mkdir -p "$DEST/${PARTS[1]}/media"
-		if [ ${#PARTS[@]} -eq 3 ]; then
-			# Allow the user to define SOURCE:DEST:NEW_FILENAME
-			# Allows the dev to specify a different filename for the source vs destination,
-			# useful when having multiple tiles for different versions of the game which should
-			# all get generated to the same base filename inside the respective versions.
-			cp "$HERE/designs/Tiles/${PARTS[0]}" "$DEST/${PARTS[1]}/media/${PARTS[2]}"
-		else
-			# Normal behaviour; SOURCE:DEST
-			cp "$HERE/designs/Tiles/${PARTS[0]}" "$DEST/${PARTS[1]}/media/${PARTS[0]}"
+	# Check if this mod is a B42 or above; it will contain the version suffix after a '/'
+	PARTS=(${MOD//\// })
+	if [ ${#PARTS[@]} -eq 2 ]; then
+		MOD="${PARTS[0]}"
+		VERSION="${PARTS[1]}"
+	else
+		# Mod infos not in a versioned directory are assumed to be B41
+		VERSION="41"
+	fi
+
+	echo "Parsing tiles and packs for $MOD - B$VERSION"
+	for PACK in `egrep '^pack=' "$INFO" | sed 's/^pack=//'`; do
+		if [ -n "$PACK" ]; then
+			if [ -e "$HERE/Packs/${PACK}_b${VERSION}.pack" ]; then
+				# There is a version-specific pack; install that in the specific version only
+				if [ "$VERSION" == "41" ]; then
+					PACK_DEST="$DEST/$MOD/media/texturepacks"
+				else
+					PACK_DEST="$DEST/$MOD/$VERSION/media/texturepacks"
+				fi
+
+				echo "Deploying Packs/${PACK}_b${VERSION}.pack"
+				[ -d "$PACK_DEST" ] || mkdir -p "$PACK_DEST"
+				cp "$HERE/Packs/${PACK}_b${VERSION}.pack" "$PACK_DEST/${PACK}.pack"
+			elif [ -e "$HERE/Packs/${PACK}.pack" ]; then
+				# There is a common pack available
+				if [ "$VERSION" == "41" ]; then
+					PACK_DEST="$DEST/$MOD/media/texturepacks"
+				else
+					PACK_DEST="$DEST/$MOD/common/media/texturepacks"
+				fi
+
+				echo "Deploying Packs/${PACK}.pack"
+				[ -d "$PACK_DEST" ] || mkdir -p "$PACK_DEST"
+				cp "$HERE/Packs/${PACK}.pack" "$PACK_DEST/${PACK}.pack"
+			else
+				# No pack available, skip
+				echo "WARNING: No pack found for $PACK in $HERE/Packs/"
+			fi
 		fi
-
 	done
-fi
 
-# Install any packs (if present)
-if [ -n "$PACKS" ]; then
-	for PACK in $PACKS; do
-		# Split tile line by a colon for mod:tile file
-		PARTS=(${PACK//:/ })
+	for TILE in `egrep '^tiledef=' "$INFO" | sed 's/^tiledef=//' | sed 's: [0-9]*::'`; do
+		if [ -n "$TILE" ]; then
+			if [ -e "$HERE/Tiles/${TILE}_b${VERSION}.tiles" ]; then
+				# There is a version-specific pack; install that in the specific version only
+				if [ "$VERSION" == "41" ]; then
+					TILE_DEST="$DEST/$MOD/media"
+				else
+					TILE_DEST="$DEST/$MOD/$VERSION/media"
+				fi
 
-		[ -d "$DEST/${PARTS[1]}/media/texturepacks" ] || mkdir -p "$DEST/${PARTS[1]}/media/texturepacks"
-		if [ ${#PARTS[@]} -eq 3 ]; then
-			# Allow the user to define SOURCE:DEST:NEW_FILENAME
-			# Allows the dev to specify a different filename for the source vs destination,
-			# useful when having multiple tiles for different versions of the game which should
-			# all get generated to the same base filename inside the respective versions.
-			cp "$HERE/designs/Packs/${PARTS[0]}" "$DEST/${PARTS[1]}/media/texturepacks/${PARTS[2]}"
-		else
-			# Normal behaviour; SOURCE:DEST
-			cp "$HERE/designs/Packs/${PARTS[0]}" "$DEST/${PARTS[1]}/media/texturepacks/${PARTS[0]}"
+				echo "Deploying Tiles/${TILE}_b${VERSION}.tiles"
+				[ -d "$TILE_DEST" ] || mkdir -p "$TILE_DEST"
+				cp "$HERE/Tiles/${TILE}_b${VERSION}.tiles" "$TILE_DEST/${TILE}.tiles"
+			elif [ -e "$HERE/Tiles/${TILE}.tiles" ]; then
+				# There is a common pack available
+				if [ "$VERSION" == "41" ]; then
+					TILE_DEST="$DEST/$MOD/media"
+				else
+					TILE_DEST="$DEST/$MOD/common/media"
+				fi
+
+				echo "Deploying Tiles/${TILE}.tiles"
+				[ -d "$TILE_DEST" ] || mkdir -p "$TILE_DEST"
+				cp "$HERE/Tiles/${TILE}.tiles" "$TILE_DEST/${TILE}.tiles"
+			else
+				# No pack available, skip
+				echo "WARNING: No tile found for $TILE in $HERE/Tiles/"
+			fi
 		fi
 	done
-fi
+done
+
 
 # Deploy Steam-specific content
 cp "$HERE/src/preview.png" "$DIST/preview.png"

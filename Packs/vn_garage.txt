@@ -1,0 +1,16 @@
+version = 0
+settings
+{
+    packFileName = vn_garage.pack
+    outputImageSize = 1024,1024
+    scale50 = false
+    inputImageDirectory
+    {
+        path = ../Tiles/2x
+        imagesAreTilesheets = true
+    }
+    tileDef
+    {
+        path = ../Tiles/vn_garage.tiles
+    }
+}
