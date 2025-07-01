@@ -18,6 +18,7 @@
 --- along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ---
 --- Load order of scripts: `shared`, then `client`, then `server`.
+--require "Definitions/ContainerButtonIcons"
 
 ---@global
 VNGarage = VNGarage or {}
@@ -279,9 +280,13 @@ end
 
 
 --- Called as soon as the player completes a craft of a tire rack from a recipe
----@param thumpable Thumpable
-function VNGarage.TireRack.OnCreateRecipe(thumpable)
-	VNGarage.TireRack.SetupPlacedTile(thumpable)
+---@param table table
+---@param table.thumpable IsoThumpable
+---@param table.character IsoPlayer
+---@param table.craftRecipeData CraftRecipeData
+---@param table.facing string
+function VNGarage.TireRack.OnCreateRecipe(table)
+	VNGarage.TireRack.SetupPlacedTile(table.thumpable)
 end
 
 

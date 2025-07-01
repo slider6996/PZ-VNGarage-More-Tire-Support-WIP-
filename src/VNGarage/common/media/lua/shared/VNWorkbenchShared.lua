@@ -55,6 +55,15 @@ VNGarage.Workbench.ItemAliases = {
 	['ScrewsBox'] = 'Screws',
 }
 
+local function in_array(table, value)
+	for _, v in ipairs(table) do
+		if v == value then
+			return true
+		end
+	end
+	return false
+end
+
 
 --- Check if the given isoObject is a battery shelf
 ---@param isoObject IsoObject
@@ -84,6 +93,51 @@ function VNGarage.Workbench.ObjectIsWorkbench(isoObject)
 	-- Submitted sprite name contains "vn_battery_shelf_";
 	-- while this is not a 100% guarantee, it's a good enough check for now.
 	return string.find(spriteName, "vn_workbench_") ~= nil
+end
+
+
+--- Check if the given isoObject is a pegboard
+---@param isoObject IsoObject
+---@return boolean
+function VNGarage.Workbench.ObjectIsPegboard(isoObject)
+	---@type IsoSprite
+	local sprite = isoObject:getSprite()
+	if not sprite then
+		-- Ensure the object has a sprite, (items cannot be placed)
+		return false
+	end
+
+	---@type ItemContainer
+	--if not isoObject:getContainer() then
+		-- This is a container type object, probably a redundant check, but doesn't harm anything.
+	--	return false
+	--end
+
+	local spriteName = sprite:getName()
+
+	if spriteName == nil or spriteName == '' then
+		-- Failsafe for if an empty sprite is passed in.
+		-- This happens with transfers from vehicles, corpses, etc.
+		return false
+	end
+
+	local pegboards = {
+		'location_business_machinery_01_24',
+		'location_business_machinery_01_25',
+		'location_business_machinery_01_26',
+		'location_business_machinery_01_27',
+		'location_business_machinery_01_28',
+		'location_business_machinery_01_29',
+		'location_business_machinery_01_30',
+		'location_business_machinery_01_31',
+	}
+
+	if in_array(pegboards, spriteName) then
+		-- If the sprite name matches one of the pegboard sprites, return true.
+		return true
+	end
+
+	return false
 end
 
 
@@ -130,15 +184,6 @@ function VNGarage.Workbench.UpdateSprite(object)
 
 	-- Assign a blank sprite overlay so item removals still trigger UpdateSprite.
 	object:setOverlaySprite('vn_workbench_63')
-
-	local function in_array(table, value)
-		for _, v in ipairs(table) do
-			if v == value then
-				return true
-			end
-		end
-		return false
-	end
 
 	local function count_trues(table)
 		local count = 0
@@ -252,3 +297,148 @@ function VNGarage.Workbench.UpdateSprite(object)
 		end
 	end
 end
+
+--- Handle accepting only compatible tools on the workbench
+---@param container IsoThumpable
+---@param item InventoryItem
+---@return boolean
+function VNGarage.Workbench.AcceptItemFunction(container, item)
+	local sItem = item:getScriptItem()
+
+	if not sItem then
+		-- Failsafe if the source item doesn't have a script item
+		return false
+	end
+
+	local itemName = sItem:getName()
+
+	for _, items in pairs(VNGarage.Workbench.ItemSets) do
+		for item, _ in pairs(items) do
+			if itemName == item then
+				-- If the item is in the set, allow it to be placed.
+				return true
+			end
+		end
+	end
+
+	for _, item in pairs(VNGarage.Workbench.ItemAliases) do
+		if itemName == item then
+			-- If the item is in the set, allow it to be placed.
+			return true
+		end
+	end
+
+	return false
+end
+
+--- Check to see if the placed item is a tire rack, and attach the expected functionality if so
+---@param isoObject IsoThumpable
+function VNGarage.Workbench.SetupPlacedTile(isoObject)
+	if VNGarage.Workbench.ObjectIsWorkbench(isoObject) then
+		---@type ItemContainer
+		local container = isoObject:getContainer()
+
+		container:setAcceptItemFunction('VNGarage.Workbench.AcceptItemFunction')
+	end
+
+	if VNGarage.Workbench.ObjectIsPegboard(isoObject) then
+		print('WHEEEEEEEE')
+	end
+end
+
+
+--- Update the global index of container icons to include the workbench.
+---@global
+ContainerButtonIcons = ContainerButtonIcons or {}
+ContainerButtonIcons.VNWorkbench = getTexture("media/textures/Item_VNWorkbench.png")
+
+
+Events.OnObjectAdded.Add(VNGarage.Workbench.SetupPlacedTile)
+
+
+--- Handle EXISTING objects already on the map at the time of game load.
+local tile_tags = table.newarray(
+	'vn_workbench_0',
+	'vn_workbench_1',
+	'vn_workbench_2',
+	'vn_workbench_3',
+	'vn_workbench_4',
+	'vn_workbench_5',
+	'vn_workbench_6',
+	'vn_workbench_7'
+	--'location_business_machinery_01_24',
+	--'location_business_machinery_01_25',
+	--'location_business_machinery_01_26',
+	--'location_business_machinery_01_27',
+	--'location_business_machinery_01_28',
+	--'location_business_machinery_01_29',
+	--'location_business_machinery_01_30',
+	--'location_business_machinery_01_31'
+)
+for i = 1, #tile_tags do
+	MapObjects.OnLoadWithSprite(tile_tags[i], VNGarage.Workbench.SetupPlacedTile, 5)
+end
+
+
+do
+	local vals1 = IsoWorld.PropertyValueMap:get("ContainerCapacity") or ArrayList.new()
+	local vals2 = IsoWorld.PropertyValueMap:get("container") or ArrayList.new()
+
+	for i = 1,20 do
+		local val = tostring(i)
+		if not vals1:contains(val) then vals1:add(val) end
+	end
+	if not vals2:contains("Pegboard") then vals2:add("Pegboard") end
+
+	IsoWorld.PropertyValueMap:put("ContainerCapacity",vals1)
+	IsoWorld.PropertyValueMap:put("container",vals2)
+end
+
+
+---@param spriteManager IsoSpriteManager
+local function OnLoadedTileDefinitions(spriteManager)
+	local tile_tags = table.newarray(
+		'location_business_machinery_01_24',
+		'location_business_machinery_01_25',
+		'location_business_machinery_01_26',
+		'location_business_machinery_01_27',
+		'location_business_machinery_01_28',
+		'location_business_machinery_01_29',
+		'location_business_machinery_01_30',
+		'location_business_machinery_01_31'
+	)
+	for i = 1, #tile_tags do
+		print('Running sprite ' .. tile_tags[i])
+		local props = spriteManager:getSprite(tile_tags[i]):getProperties()
+		props:Set(IsoFlagType.container)
+		props:Set('ContainerCapacity', '8', false)
+		props:Set('container', 'Pegboard', false)
+		props:Set('Surface', '58', false)
+		props:Set('ContainerPosition', 'High', false)
+		props:Set('CustomName', 'Pegboard', false)
+		props:Set('Soffset', '1', false)
+		-- @todo this is the key to investigate!
+		props:Set('WallOverlay', 'false', false)
+		props:CreateKeySet()
+
+		local prop_names = props:getPropertyNames()
+		for j = 0, prop_names:size() - 1 do
+			local prop_name = prop_names:get(j)
+			print('Property: ' .. prop_name .. ' = ' .. props:Val(prop_name))
+		end
+	end
+
+	local props2 = spriteManager:getSprite('furniture_shelving_01_32'):getProperties()
+	print('TEST TEST TEST shelving')
+	local prop_names2 = props2:getPropertyNames()
+	for j = 0, prop_names2:size() - 1 do
+		local prop_name = prop_names2:get(j)
+		print('Property: ' .. prop_name .. ' = ' .. props2:Val(prop_name))
+	end
+end
+
+---@global
+ContainerButtonIcons = ContainerButtonIcons or {}
+ContainerButtonIcons.Pegboard = getTexture("media/textures/Item_TireRackUnpainted.png")
+
+Events.OnLoadedTileDefinitions.Add(OnLoadedTileDefinitions)

@@ -122,9 +122,13 @@ end
 
 
 --- Called as soon as the player completes a craft of a tire rack from a recipe
----@param thumpable Thumpable
-function VNGarage.BatteryShelf.OnCreateRecipe(thumpable)
-	VNGarage.BatteryShelf.SetupPlacedTile(thumpable)
+---@param table table
+---@param table.thumpable IsoThumpable
+---@param table.character IsoPlayer
+---@param table.craftRecipeData CraftRecipeData
+---@param table.facing string
+function VNGarage.BatteryShelf.OnCreateRecipe(table)
+	VNGarage.BatteryShelf.SetupPlacedTile(table.thumpable)
 end
 
 
