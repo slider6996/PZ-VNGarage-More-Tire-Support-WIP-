@@ -1,0 +1,10 @@
+[ STUFF ]
+[h3]Test Item[/h3]
+This is a test item.
+[ ------ ]
+
+[ ALERT_CONFIG ]
+link1 = Support this Mod = https://steamcommunity.com/linkfilter/?u=https://ko-fi.com/cdp1337,
+link2 = Workshop = https://steamcommunity.com/id/cdp1337/myworkshopfiles/?appid=108600,
+link3 = Github = https://steamcommunity.com/linkfilter/?u=https://github.com/VeraciousNetwork,
+[ ------ ]
