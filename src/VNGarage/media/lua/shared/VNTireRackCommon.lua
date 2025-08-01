@@ -146,6 +146,8 @@ VNTireRackCommon.ValidTireNames = {
 	'SS100modernTire',
 	'SS100normalTire',
 	'SS100oldTire',
+	"RNG91Tire0",
+        "RNG91Tire5", 
 	'SmallTire',
 	'SmallTire1',
 	'SmallTire2',
