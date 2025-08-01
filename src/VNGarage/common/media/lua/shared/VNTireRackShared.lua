@@ -151,6 +151,8 @@ VNGarage.TireRack.ValidTireNames = {
 	'R32Tire1',
 	'R32Tire2',
 	'R32TireA',
+	"RNG91Tire0",
+        "RNG91Tire5",
 	'SS100modernTire',
 	'SS100normalTire',
 	'SS100oldTire',
